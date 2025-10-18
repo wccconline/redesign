@@ -64,26 +64,26 @@ const CalendarPage: React.FC = () => {
             </div>
             
             <div className="p-6">
-              {/* Calendar Embed */}
-              <div className="w-full min-h-[600px] bg-gray-100 rounded-lg flex items-center justify-center">
-                <div className="text-center">
-                  <Calendar className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold text-gray-600 mb-2">
-                    Interactive Calendar
-                  </h3>
-                  <p className="text-gray-500 mb-4">
-                    The full interactive calendar will be embedded here
-                  </p>
-                  <a 
-                    href="https://www.webbchapel.org/calendar32/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center bg-church-blue text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-                  >
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    View Full Calendar
-                  </a>
-                </div>
+              {/* Calendar Embed - Responsive Container */}
+              <div className="relative w-full" style={{ paddingBottom: '75%' }}>
+                <iframe
+                  src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FChicago&showPrint=0&src=bWFydHlyZWFjaDUxQGdtYWlsLmNvbQ&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23039be5&color=%230b8043"
+                  className="absolute top-0 left-0 w-full h-full rounded-lg border-0"
+                  title="Church Calendar"
+                />
+              </div>
+
+              {/* View Full Calendar Link */}
+              <div className="mt-6 text-center">
+                <a
+                  href="https://www.webbchapel.org/calendar32/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center bg-church-blue text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                >
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  View Full Calendar
+                </a>
               </div>
             </div>
           </div>
