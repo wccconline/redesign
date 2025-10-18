@@ -47,7 +47,7 @@ const LiveStreamingPage: React.FC = () => {
               <div className="mt-6 flex flex-wrap gap-4 text-sm text-gray-600">
                 <div className="flex items-center">
                   <Clock className="w-4 h-4 mr-2" />
-                  Sundays at 10:30 AM
+                  Sundays at 9:30 AM
                 </div>
                 <div className="flex items-center">
                   <Calendar className="w-4 h-4 mr-2" />
@@ -142,16 +142,13 @@ const LiveStreamingPage: React.FC = () => {
             <div className="space-y-3">
               <div className="flex justify-between items-center py-2 border-b border-gray-100">
                 <span className="font-medium">Sunday Worship</span>
-                <span className="text-church-blue font-semibold">10:30 AM</span>
-              </div>
-              <div className="flex justify-between items-center py-2 border-b border-gray-100">
-                <span className="font-medium">Sunday Bible Study</span>
                 <span className="text-church-blue font-semibold">9:30 AM</span>
               </div>
               <div className="flex justify-between items-center py-2 border-b border-gray-100">
-                <span className="font-medium">Wednesday Bible Study</span>
-                <span className="text-church-blue font-semibold">7:00 PM</span>
+                <span className="font-medium">Sunday Bible Study</span>
+                <span className="text-church-blue font-semibold">11:00 AM</span>
               </div>
+              
             </div>
           </div>
         </div>

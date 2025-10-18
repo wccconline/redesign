@@ -1,7 +1,6 @@
-import React from 'react';
 import { Phone, Users, Clock, MapPin } from 'lucide-react';
 
-const SmallGroupsPage: React.FC = () => {
+function SmallGroupsPage() {
   return (
     <div className="py-16">
       <div className="container mx-auto px-4">
@@ -69,37 +68,6 @@ const SmallGroupsPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Group Types */}
-          <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">Types of Groups</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">Mixed Groups</h3>
-                <p className="text-gray-700">
-                  Groups with men, women, and families of all ages. These groups focus on general Bible study and fellowship.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">Women's Groups</h3>
-                <p className="text-gray-700">
-                  Dedicated groups for women to study, pray, and support one another in their faith journey.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">Family Groups</h3>
-                <p className="text-gray-700">
-                  Groups that welcome children and focus on family-oriented Bible study and activities.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">Spanish Groups</h3>
-                <p className="text-gray-700">
-                  Groups that meet in Spanish for our Spanish-speaking members and visitors.
-                </p>
-              </div>
-            </div>
-          </div>
-
           {/* Benefits */}
           <div className="bg-gray-50 rounded-lg p-8 mb-8">
             <h2 className="text-2xl font-bold text-gray-800 mb-6">Benefits of Small Groups</h2>
@@ -131,28 +99,6 @@ const SmallGroupsPage: React.FC = () => {
                   Receive prayer, encouragement, and practical support from your group members.
                 </p>
               </div>
-            </div>
-          </div>
-
-          {/* Contact Information */}
-          <div className="bg-church-blue text-white rounded-lg p-8 text-center">
-            <h2 className="text-2xl font-bold mb-4">JOIN A SMALL GROUP</h2>
-            <p className="text-lg mb-6">
-              Ready to get connected? Contact us to find a group that fits your schedule and interests.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="tel:972-241-3293"
-                className="bg-white text-church-blue px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-              >
-                Call: (972) 241-3293
-              </a>
-              <a 
-                href="/contact"
-                className="bg-white text-church-blue px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-              >
-                Send Us a Message
-              </a>
             </div>
           </div>
         </div>
