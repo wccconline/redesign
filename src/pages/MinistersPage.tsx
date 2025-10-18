@@ -1,5 +1,3 @@
-import { Mic, BookOpen, Heart, Users } from 'lucide-react';
-
 function MinistersPage() {
   const ministers = [
     {
