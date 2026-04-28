@@ -1,257 +1,182 @@
 import { Link } from 'react-router-dom';
 import { ChevronDown, Menu, X } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { getImagePath } from '../utils/assets';
 
 function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
-  // Set background image dynamically
-  useEffect(() => {
-    const header = document.querySelector('.header-background') as HTMLElement;
-    if (header) {
-      header.style.backgroundImage = `url(${getImagePath('headerbg.jpg')})`;
-    }
-  }, []);
+  const [mobileLeadershipOpen, setMobileLeadershipOpen] = useState(false);
+  const [mobileMembersOpen, setMobileMembersOpen] = useState(false);
+
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   return (
     <>
-      {/* Main Header */}
-      <header className="bg-white shadow-md h-32 flex items-center header-background">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between">
-            {/* Mobile Menu Button - Left side */}
-            <button 
-              className="md:hidden p-2"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
+      {/* Top Contact Bar */}
+      <div className="bg-church-blue text-white text-sm">
+        <div className="container mx-auto px-4 py-2 flex items-center justify-center gap-4 flex-wrap">
+          <span>13425 Webb Chapel Road, Farmers Branch, Texas 75234</span>
+          <span className="text-church-gold font-bold">|</span>
+          <span>(972) 241-3293</span>
+        </div>
+      </div>
 
-            {/* Desktop Left Navigation */}
-            <nav className="hidden md:flex items-center space-x-6">
-              <Link 
-                to="/" 
-                className="text-gray-800 hover:text-church-blue font-semibold transition-colors"
+      {/* Main Header */}
+      <header className="bg-white border-b-4 border-church-gold shadow-md">
+        <div className="container mx-auto px-4 py-3">
+          <div className="flex items-center justify-between">
+
+            {/* Logo - Left */}
+            <Link to="/" className="flex-shrink-0">
+              <img
+                src={getImagePath('logo.png')}
+                alt="Webb Chapel church of Christ"
+                className="h-20 w-auto"
+              />
+            </Link>
+
+            {/* Desktop Navigation - Right */}
+            <nav className="hidden md:flex items-center gap-7">
+              <Link
+                to="/"
+                className="text-church-blue hover:text-church-gold font-semibold text-sm tracking-wide transition-colors"
               >
                 HOME
               </Link>
-              
+
               {/* Leadership Dropdown */}
               <div className="relative group">
-                <button className="flex items-center text-gray-800 hover:text-church-blue font-semibold transition-colors">
+                <button className="flex items-center text-church-blue hover:text-church-gold font-semibold text-sm tracking-wide transition-colors">
                   LEADERSHIP
                   <ChevronDown className="ml-1 h-4 w-4" />
                 </button>
-                <div className="absolute top-full left-0 mt-1 w-48 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                  <Link 
-                    to="/elders" 
-                    className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
-                  >
-                    SHEPHERDS
-                  </Link>
-                  <Link 
-                    to="/deacons" 
-                    className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
-                  >
-                    DEACONS
-                  </Link>
-                  <Link 
-                    to="/ministers" 
-                    className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
-                  >
-                    MINISTERS
-                  </Link>
-                  <Link 
-                    to="/staff" 
-                    className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
-                  >
-                    STAFF
-                  </Link>
+                <div className="absolute top-full left-0 mt-2 w-48 bg-white border-t-2 border-church-gold shadow-lg rounded-b-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                  <Link to="/elders" className="block px-4 py-2.5 text-church-blue hover:bg-amber-50 hover:text-church-gold text-sm font-medium transition-colors border-b border-gray-100">SHEPHERDS</Link>
+                  <Link to="/deacons" className="block px-4 py-2.5 text-church-blue hover:bg-amber-50 hover:text-church-gold text-sm font-medium transition-colors border-b border-gray-100">DEACONS</Link>
+                  <Link to="/ministers" className="block px-4 py-2.5 text-church-blue hover:bg-amber-50 hover:text-church-gold text-sm font-medium transition-colors border-b border-gray-100">MINISTERS</Link>
+                  <Link to="/staff" className="block px-4 py-2.5 text-church-blue hover:bg-amber-50 hover:text-church-gold text-sm font-medium transition-colors">STAFF</Link>
                 </div>
               </div>
 
-              <Link 
-                to="/livestreaming" 
-                className="text-gray-800 hover:text-church-blue font-semibold transition-colors"
+              <Link
+                to="/livestreaming"
+                className="text-church-blue hover:text-church-gold font-semibold text-sm tracking-wide transition-colors"
               >
                 LIVESTREAM
               </Link>
-            </nav>
 
-            {/* Logo - Centered on mobile, normal position on desktop */}
-            <div className="flex-shrink-0">
-              <Link to="/">
-                <img 
-                  src={getImagePath('logo.png')} 
-                  alt="Webb Chapel church of Christ" 
-                  className="h-20 w-auto"
-                />
-              </Link>
-            </div>
-
-            {/* Desktop Right Navigation */}
-            <nav className="hidden md:flex items-center space-x-6">
-              <Link 
-                to="/smallgroups" 
-                className="text-gray-800 hover:text-church-blue font-semibold transition-colors"
+              <Link
+                to="/smallgroups"
+                className="text-church-blue hover:text-church-gold font-semibold text-sm tracking-wide transition-colors"
               >
                 SMALL GROUPS
               </Link>
-              
+
               {/* Members Dropdown */}
               <div className="relative group">
-                <button className="flex items-center text-gray-800 hover:text-church-blue font-semibold transition-colors">
+                <button className="flex items-center text-church-blue hover:text-church-gold font-semibold text-sm tracking-wide transition-colors">
                   MEMBERS
                   <ChevronDown className="ml-1 h-4 w-4" />
                 </button>
-                <div className="absolute top-full left-0 mt-1 w-48 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                  <Link 
-                    to="/calendar" 
-                    className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
-                  >
-                    CALENDAR
-                  </Link>
-                  <Link 
-                    to="/giving" 
-                    className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
-                  >
-                    GIVING
-                  </Link>
-                  <Link 
-                    to="/summerlearningcamp" 
-                    className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
-                  >
-                    SUMMER CAMP
-                  </Link>
-                  <a 
-                    href="https://onrealm.org/WebbChapelChurch" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
-                  >
-                    REALM LOGIN
-                  </a>
+                <div className="absolute top-full left-0 mt-2 w-48 bg-white border-t-2 border-church-gold shadow-lg rounded-b-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                  <Link to="/calendar" className="block px-4 py-2.5 text-church-blue hover:bg-amber-50 hover:text-church-gold text-sm font-medium transition-colors border-b border-gray-100">CALENDAR</Link>
+                  <Link to="/giving" className="block px-4 py-2.5 text-church-blue hover:bg-amber-50 hover:text-church-gold text-sm font-medium transition-colors border-b border-gray-100">GIVING</Link>
+                  <Link to="/summerlearningcamp" className="block px-4 py-2.5 text-church-blue hover:bg-amber-50 hover:text-church-gold text-sm font-medium transition-colors border-b border-gray-100">SUMMER CAMP</Link>
+                  <a href="https://onrealm.org/WebbChapelChurch" target="_blank" rel="noopener noreferrer" className="block px-4 py-2.5 text-church-blue hover:bg-amber-50 hover:text-church-gold text-sm font-medium transition-colors">REALM LOGIN</a>
                 </div>
               </div>
 
-              <Link 
-                to="/contact" 
-                className="text-gray-800 hover:text-church-blue font-semibold transition-colors"
+              <Link
+                to="/contact"
+                className="text-church-blue hover:text-church-gold font-semibold text-sm tracking-wide transition-colors"
               >
                 CONTACT
               </Link>
             </nav>
 
-            {/* Spacer for mobile to balance the hamburger button */}
-            <div className="md:hidden w-10"></div>
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden p-2 text-church-blue"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
           </div>
         </div>
       </header>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white shadow-lg border-t">
+        <div className="md:hidden bg-church-blue text-white shadow-lg z-40">
           <div className="container mx-auto px-4 py-4">
-            <nav className="space-y-4">
-              <Link 
-                to="/" 
-                className="block text-gray-800 hover:text-church-blue font-semibold transition-colors py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
+            <nav className="space-y-1">
+              <Link
+                to="/"
+                className="block py-2.5 px-3 font-semibold text-sm tracking-wide hover:text-church-gold transition-colors"
+                onClick={closeMobileMenu}
               >
                 HOME
               </Link>
-              
-              <div className="space-y-2">
-                <div className="text-gray-800 font-semibold py-2">LEADERSHIP</div>
-                <div className="pl-4 space-y-2">
-                  <Link 
-                    to="/elders" 
-                    className="block text-gray-600 hover:text-church-blue transition-colors py-1"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    SHEPHERDS
-                  </Link>
-                  <Link 
-                    to="/deacons" 
-                    className="block text-gray-600 hover:text-church-blue transition-colors py-1"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    DEACONS
-                  </Link>
-                  <Link 
-                    to="/ministers" 
-                    className="block text-gray-600 hover:text-church-blue transition-colors py-1"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    MINISTERS
-                  </Link>
-                  <Link 
-                    to="/staff" 
-                    className="block text-gray-600 hover:text-church-blue transition-colors py-1"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    STAFF
-                  </Link>
-                </div>
+
+              {/* Leadership accordion */}
+              <div>
+                <button
+                  className="w-full text-left py-2.5 px-3 font-semibold text-sm tracking-wide hover:text-church-gold transition-colors flex items-center justify-between"
+                  onClick={() => setMobileLeadershipOpen(!mobileLeadershipOpen)}
+                >
+                  LEADERSHIP
+                  <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${mobileLeadershipOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {mobileLeadershipOpen && (
+                  <div className="pl-6 space-y-1 border-l-2 border-church-gold ml-3 mb-1">
+                    <Link to="/elders" className="block py-2 text-sm text-gray-300 hover:text-church-gold transition-colors" onClick={closeMobileMenu}>SHEPHERDS</Link>
+                    <Link to="/deacons" className="block py-2 text-sm text-gray-300 hover:text-church-gold transition-colors" onClick={closeMobileMenu}>DEACONS</Link>
+                    <Link to="/ministers" className="block py-2 text-sm text-gray-300 hover:text-church-gold transition-colors" onClick={closeMobileMenu}>MINISTERS</Link>
+                    <Link to="/staff" className="block py-2 text-sm text-gray-300 hover:text-church-gold transition-colors" onClick={closeMobileMenu}>STAFF</Link>
+                  </div>
+                )}
               </div>
 
-              <Link 
-                to="/livestreaming" 
-                className="block text-gray-800 hover:text-church-blue font-semibold transition-colors py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
+              <Link
+                to="/livestreaming"
+                className="block py-2.5 px-3 font-semibold text-sm tracking-wide hover:text-church-gold transition-colors"
+                onClick={closeMobileMenu}
               >
                 LIVESTREAM
               </Link>
-              
-              <Link 
-                to="/smallgroups" 
-                className="block text-gray-800 hover:text-church-blue font-semibold transition-colors py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
+
+              <Link
+                to="/smallgroups"
+                className="block py-2.5 px-3 font-semibold text-sm tracking-wide hover:text-church-gold transition-colors"
+                onClick={closeMobileMenu}
               >
                 SMALL GROUPS
               </Link>
-              
-              <div className="space-y-2">
-                <div className="text-gray-800 font-semibold py-2">MEMBERS</div>
-                <div className="pl-4 space-y-2">
-                  <Link 
-                    to="/calendar" 
-                    className="block text-gray-600 hover:text-church-blue transition-colors py-1"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    CALENDAR
-                  </Link>
-                  <Link 
-                    to="/giving" 
-                    className="block text-gray-600 hover:text-church-blue transition-colors py-1"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    GIVING
-                  </Link>
-                  <Link 
-                    to="/summerlearningcamp" 
-                    className="block text-gray-600 hover:text-church-blue transition-colors py-1"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    SUMMER CAMP
-                  </Link>
-                  <a 
-                    href="https://onrealm.org/WebbChapelChurch" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="block text-gray-600 hover:text-church-blue transition-colors py-1"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    REALM LOGIN
-                  </a>
-                </div>
+
+              {/* Members accordion */}
+              <div>
+                <button
+                  className="w-full text-left py-2.5 px-3 font-semibold text-sm tracking-wide hover:text-church-gold transition-colors flex items-center justify-between"
+                  onClick={() => setMobileMembersOpen(!mobileMembersOpen)}
+                >
+                  MEMBERS
+                  <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${mobileMembersOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {mobileMembersOpen && (
+                  <div className="pl-6 space-y-1 border-l-2 border-church-gold ml-3 mb-1">
+                    <Link to="/calendar" className="block py-2 text-sm text-gray-300 hover:text-church-gold transition-colors" onClick={closeMobileMenu}>CALENDAR</Link>
+                    <Link to="/giving" className="block py-2 text-sm text-gray-300 hover:text-church-gold transition-colors" onClick={closeMobileMenu}>GIVING</Link>
+                    <Link to="/summerlearningcamp" className="block py-2 text-sm text-gray-300 hover:text-church-gold transition-colors" onClick={closeMobileMenu}>SUMMER CAMP</Link>
+                    <a href="https://onrealm.org/WebbChapelChurch" target="_blank" rel="noopener noreferrer" className="block py-2 text-sm text-gray-300 hover:text-church-gold transition-colors" onClick={closeMobileMenu}>REALM LOGIN</a>
+                  </div>
+                )}
               </div>
 
-              <Link 
-                to="/contact" 
-                className="block text-gray-800 hover:text-church-blue font-semibold transition-colors py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
+              <Link
+                to="/contact"
+                className="block py-2.5 px-3 font-semibold text-sm tracking-wide hover:text-church-gold transition-colors"
+                onClick={closeMobileMenu}
               >
                 CONTACT
               </Link>
@@ -259,13 +184,8 @@ function Header() {
           </div>
         </div>
       )}
-
-      {/* Contact Bar */}
-      <div className="w-full text-center church-blue-background text-white font-bold py-2">
-        13425 Webb Chapel Road, Farmers Branch, Texas 75234&nbsp;&nbsp;|&nbsp;&nbsp;(972) 241-3293
-      </div>
     </>
   );
-};
+}
 
 export default Header;
