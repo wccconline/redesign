@@ -1,6 +1,6 @@
 # Webb Chapel Church of Christ - React Website
 
-A modern React application for the Webb Chapel Church of Christ website, built with TypeScript, Vite, and Tailwind CSS.
+A modern React application for the Webb Chapel Church of Christ website, built with TypeScript, Vite, and Tailwind CSS.  
 
 ## 🚀 Features
 
