@@ -71,12 +71,27 @@ function Header() {
                 </div>
               </div>
 
-              <Link 
-                to="/livestreaming" 
-                className="text-gray-800 hover:text-church-blue font-semibold transition-colors"
-              >
-                LIVESTREAM
-              </Link>
+              {/* Livestream Dropdown */}
+              <div className="relative group">
+                <button className="flex items-center text-gray-800 hover:text-church-blue font-semibold transition-colors">
+                  LIVESTREAM
+                  <ChevronDown className="ml-1 h-4 w-4" />
+                </button>
+                <div className="absolute top-full left-0 mt-1 w-48 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                  <Link
+                    to="/livestreaming"
+                    className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
+                  >
+                    LIVE STREAM
+                  </Link>
+                  <Link
+                    to="/sermonarchives"
+                    className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
+                  >
+                    SERMON ARCHIVES
+                  </Link>
+                </div>
+              </div>
             </nav>
 
             {/* Logo - Centered on mobile, normal position on desktop */}
@@ -196,13 +211,25 @@ function Header() {
                 </div>
               </div>
 
-              <Link 
-                to="/livestreaming" 
-                className="block text-gray-800 hover:text-church-blue font-semibold transition-colors py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                LIVESTREAM
-              </Link>
+              <div className="space-y-2">
+                <div className="text-gray-800 font-semibold py-2">LIVESTREAM</div>
+                <div className="pl-4 space-y-2">
+                  <Link
+                    to="/livestreaming"
+                    className="block text-gray-600 hover:text-church-blue transition-colors py-1"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    LIVE STREAM
+                  </Link>
+                  <Link
+                    to="/sermonarchives"
+                    className="block text-gray-600 hover:text-church-blue transition-colors py-1"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    SERMON ARCHIVES
+                  </Link>
+                </div>
+              </div>
               
               <Link 
                 to="/smallgroups" 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Play, Archive, Calendar, Clock } from 'lucide-react';
 
 const LiveStreamingPage: React.FC = () => {
@@ -58,60 +59,22 @@ const LiveStreamingPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Sermon Archives Section */}
-        <div className="space-y-8">
-          {/* 2025 Archives */}
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <div className="bg-gray-50 px-6 py-4 border-b">
-              <h2 className="text-2xl font-bold text-gray-800 flex items-center">
-                <Archive className="w-6 h-6 mr-3" />
-                Sermon Archives 2025
-              </h2>
-              <p className="text-gray-600 mt-2">
-                Recent sermons and teachings from 2025
-              </p>
-            </div>
-            
-            <div className="p-6">
-              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-                <iframe
-                  src="https://www.youtube.com/embed/videoseries?list=PLom-0r33d-gAOWuczIHZAvbC_9eImSocp"
-                  className="absolute top-0 left-0 w-full h-full rounded-lg"
-                  frameBorder="0"
-                  allowFullScreen
-                  title="YouTube channel videos 2025"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                />
-              </div>
+        {/* Sermon Archives Link */}
+        <Link
+          to="/sermonarchives"
+          className="bg-white rounded-lg shadow-lg p-6 flex items-center justify-between hover:shadow-xl transition-shadow cursor-pointer"
+        >
+          <div className="flex items-center">
+            <Archive className="w-6 h-6 mr-3 text-church-blue" />
+            <div>
+              <h2 className="text-xl font-bold text-gray-800">Sermon Archives</h2>
+              <p className="text-gray-600 text-sm mt-1">Browse past sermons from 2024–2026</p>
             </div>
           </div>
-
-          {/* 2024 Archives */}
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <div className="bg-gray-50 px-6 py-4 border-b">
-              <h2 className="text-2xl font-bold text-gray-800 flex items-center">
-                <Archive className="w-6 h-6 mr-3" />
-                Sermon Archives 2024
-              </h2>
-              <p className="text-gray-600 mt-2">
-                Sermons and teachings from 2024
-              </p>
-            </div>
-            
-            <div className="p-6">
-              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-                <iframe
-                  src="https://www.youtube.com/embed/videoseries?list=PLom-0r33d-gCan9qQJRoJMLTce2Nq0u4L"
-                  className="absolute top-0 left-0 w-full h-full rounded-lg"
-                  frameBorder="0"
-                  allowFullScreen
-                  title="YouTube channel videos 2024"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+          <span className="bg-church-blue text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
+            View Archives
+          </span>
+        </Link>
 
         {/* Additional Information */}
         <div className="mt-12 grid md:grid-cols-2 gap-8">
