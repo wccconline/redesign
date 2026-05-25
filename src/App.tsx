@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
-import SubscribePage from './pages/SubscribePage';
 import MinistriesPage from './pages/MinistriesPage';
 import MissionariesPage from './pages/MissionariesPage';
 import ContactPage from './pages/ContactPage';
@@ -24,7 +23,6 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/subscribe" element={<SubscribePage />} />
           <Route path="/ministries" element={<MinistriesPage />} />
           <Route path="/missionaries" element={<MissionariesPage />} />
           <Route path="/contact" element={<ContactPage />} />
