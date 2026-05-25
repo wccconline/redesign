@@ -16,6 +16,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      VITE_FORMSPREE_ID: ${{ secrets.VITE_FORMSPREE_ID }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

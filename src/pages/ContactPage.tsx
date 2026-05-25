@@ -1,6 +1,6 @@
 import React from 'react';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
-import CognitoForm from '../components/CognitoForm';
+import ContactForm from '../components/ContactForm';
 
 const ContactPage: React.FC = () => {
   return (
@@ -106,12 +106,7 @@ const ContactPage: React.FC = () => {
                 Send Us a Message
               </h2>
               
-              <div className="bg-gray-50 rounded-lg p-6">
-                <CognitoForm 
-                  dataKey="V3ZbR_hZIEKuz9M3qRqiEA"
-                  dataForm="93"
-                />
-              </div>
+              <ContactForm />
             </div>
           </div>
         </div>
