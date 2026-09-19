@@ -77,7 +77,7 @@ function Header() {
                   LIVESTREAM
                   <ChevronDown className="ml-1 h-4 w-4" />
                 </button>
-                <div className="absolute top-full left-0 mt-1 w-48 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="absolute top-full left-0 mt-1 w-56 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                   <Link
                     to="/livestreaming"
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
@@ -89,6 +89,12 @@ function Header() {
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
                   >
                     SERMON ARCHIVES
+                  </Link>
+                  <Link
+                    to="/videobiblelessons"
+                    className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
+                  >
+                    VIDEO BIBLE LESSONS
                   </Link>
                 </div>
               </div>
@@ -261,6 +267,13 @@ function Header() {
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     SERMON ARCHIVES
+                  </Link>
+                  <Link
+                    to="/videobiblelessons"
+                    className="block text-gray-600 hover:text-church-blue transition-colors py-1"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    VIDEO BIBLE LESSONS
                   </Link>
                 </div>
               </div>

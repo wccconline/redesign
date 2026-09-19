@@ -18,13 +18,6 @@ const CalendarPage: React.FC = () => {
       description: "Adult Bible study classes for all ages and levels."
     },
     {
-      title: "Wednesday Bible Study",
-      date: "Every Wednesday",
-      time: "7:00 PM",
-      location: "Main Sanctuary",
-      description: "Mid-week Bible study and prayer meeting."
-    },
-    {
       title: "Small Groups",
       date: "Various Days",
       time: "Various Times",

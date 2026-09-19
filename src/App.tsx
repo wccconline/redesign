@@ -9,6 +9,7 @@ import ImNewHerePage from './pages/ImNewHerePage';
 import SmallGroupsPage from './pages/SmallGroupsPage';
 import LiveStreamingPage from './pages/LiveStreamingPage';
 import SermonArchivesPage from './pages/SermonArchivesPage';
+import VideoBibleLessonsPage from './pages/VideoBibleLessonsPage';
 import SitbPage from './pages/SitbPage';
 import SummerLearningCampPage from './pages/SummerLearningCampPage';
 import EldersPage from './pages/EldersPage';
@@ -31,6 +32,7 @@ function App() {
           <Route path="/smallgroups" element={<SmallGroupsPage />} />
           <Route path="/livestreaming" element={<LiveStreamingPage />} />
           <Route path="/sermonarchives" element={<SermonArchivesPage />} />
+          <Route path="/videobiblelessons" element={<VideoBibleLessonsPage />} />
           <Route path="/sitb" element={<SitbPage />} />
           <Route path="/summerlearningcamp" element={<SummerLearningCampPage />} />
           <Route path="/elders" element={<EldersPage />} />

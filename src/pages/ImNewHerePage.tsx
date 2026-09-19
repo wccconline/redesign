@@ -56,10 +56,6 @@ const ImNewHerePage: React.FC = () => {
                   <h4 className="font-semibold">Sunday Evening</h4>
                   <p>Small Group Meetings</p>
                 </div>
-                <div>
-                  <h4 className="font-semibold">Wednesday Evening</h4>
-                  <p>7:00 PM - Bible Study</p>
-                </div>
               </div>
             </div>
 
@@ -110,17 +106,11 @@ const ImNewHerePage: React.FC = () => {
               <BookOpen className="h-8 w-8 mr-3 text-church-blue" />
               BIBLE STUDY OPPORTUNITIES
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 gap-6">
               <div>
                 <h3 className="text-lg font-semibold text-gray-800 mb-3">Sunday Classes</h3>
                 <p className="text-gray-700">
                   We offer age-appropriate Bible classes for everyone from 2 years old through adults. Classes begin at 11:00 AM and last approximately 45 minutes.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">Wednesday Evening</h3>
-                <p className="text-gray-700">
-                  Join us for mid-week Bible study and fellowship. This is a great opportunity to dive deeper into God's Word and connect with other believers.
                 </p>
               </div>
             </div>

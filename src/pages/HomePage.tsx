@@ -28,7 +28,7 @@ const HomePage: React.FC = () => {
             are and worship with us.
           </p>
 
-          <blockquote className="relative max-w-3xl mx-auto mt-10 px-8 py-7 bg-church-blue text-white rounded-xl text-xl italic leading-relaxed">
+          <blockquote className="relative max-w-3xl mx-auto my-10 px-8 py-7 bg-church-blue text-white rounded-xl text-xl italic leading-relaxed">
             <span
               aria-hidden="true"
               className="absolute -top-1 left-4 text-7xl leading-none text-church-gold not-italic font-serif"
@@ -41,52 +41,35 @@ const HomePage: React.FC = () => {
               Psalm 34:11&ndash;14
             </cite>
           </blockquote>
-        </div>
-      </section>
 
-      {/* Video Bible Lessons */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <h1 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">
-            VIDEO BIBLE LESSONS
-          </h1>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <h3 className="text-xl font-bold text-center mb-4">SEARCHING FOR TRUTH</h3>
-              <div className="aspect-video">
-                <iframe 
-                  src="https://player.vimeo.com/video/34565015" 
-                  className="w-full h-full rounded"
-                  frameBorder="0" 
-                  allowFullScreen
-                />
-              </div>
-            </div>
-            
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <h3 className="text-xl font-bold text-center mb-4">WHY ARE THERE SO MANY CHURCHES?</h3>
-              <div className="aspect-video">
-                <iframe 
-                  src="https://player.vimeo.com/video/48952092" 
-                  className="w-full h-full rounded"
-                  frameBorder="0" 
-                  allowFullScreen
-                />
-              </div>
-            </div>
-            
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <h3 className="text-xl font-bold text-center mb-4">WHAT MUST I DO TO BE SAVED?</h3>
-              <div className="aspect-video">
-                <iframe 
-                  src="https://player.vimeo.com/video/57826363" 
-                  className="w-full h-full rounded"
-                  frameBorder="0" 
-                  allowFullScreen
-                />
-              </div>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
+            <Link
+              to="/imnewhere"
+              className="block p-5 border-2 border-gray-200 rounded-xl text-church-blue font-bold hover:border-church-gold hover:shadow-md transition"
+            >
+              Plan your visit
+              <span className="block mt-1 text-sm font-normal text-gray-600">
+                Times, what to expect
+              </span>
+            </Link>
+            <Link
+              to="/livestreaming"
+              className="block p-5 border-2 border-gray-200 rounded-xl text-church-blue font-bold hover:border-church-gold hover:shadow-md transition"
+            >
+              Watch live
+              <span className="block mt-1 text-sm font-normal text-gray-600">
+                Sundays at 9:30 AM
+              </span>
+            </Link>
+            <Link
+              to="/smallgroups"
+              className="block p-5 border-2 border-gray-200 rounded-xl text-church-blue font-bold hover:border-church-gold hover:shadow-md transition"
+            >
+              Small groups
+              <span className="block mt-1 text-sm font-normal text-gray-600">
+                Find one near you
+              </span>
+            </Link>
           </div>
         </div>
       </section>
@@ -98,7 +81,7 @@ const HomePage: React.FC = () => {
             RESOURCE LINKS
           </h1>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
             <a 
               href="http://www.eem.org" 
               target="_blank" 

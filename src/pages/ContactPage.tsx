@@ -86,16 +86,6 @@ const ContactPage: React.FC = () => {
                       </p>
                     </div>
                   </div>
-                  
-                  <div className="flex items-start">
-                    <Clock className="h-6 w-6 text-church-blue mt-1 mr-3 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold text-gray-800">Wednesday Evening</h3>
-                      <p className="text-gray-600">
-                        7:00 PM - Bible Study
-                      </p>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
