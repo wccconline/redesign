@@ -30,7 +30,7 @@ const SummerLearningCampPage: React.FC = () => {
               className="mx-auto mb-6 max-w-full h-auto"
             />
             <h2 className="text-3xl font-bold text-gray-800 mb-4">
-              Summer Learning Camp 2023
+              Summer Learning Camp 2027
             </h2>
           </div>
         </div>
@@ -43,7 +43,7 @@ const SummerLearningCampPage: React.FC = () => {
                 <strong>Webb Chapel Church of Christ</strong><br />
                 Tuesdays and Thursdays<br />
                 10:00am-12:30pm<br />
-                June 1- July 13<br />
+                Dates TBD<br />
                 Reading Tutoring, Fun with Science, Character Class, Music, and lots of fun!<br />
                 Lunch provided<br />
                 <strong>All Free!</strong>
@@ -106,7 +106,7 @@ const SummerLearningCampPage: React.FC = () => {
               <Calendar className="w-8 h-8 mr-4" />
               <div>
                 <h3 className="text-xl font-bold">Duration</h3>
-                <p className="text-blue-100">June 1 - July 13</p>
+                <p className="text-blue-100">TBD</p>
               </div>
             </div>
             
