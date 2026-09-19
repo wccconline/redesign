@@ -3,6 +3,7 @@
 @theme {
   --color-church-blue: #243f63;
   --color-church-gold: #d4af37;
+  --font-questrial: 'Questrial', sans-serif;
 }
 
 :root {

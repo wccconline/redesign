@@ -16,33 +16,60 @@ const HomePage: React.FC = () => {
 
       {/* Welcome Section */}
       <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8">
-              WELCOME TO WEBB CHAPEL CHURCH OF CHRIST!
-            </h1>
-            <div className="prose prose-lg mx-auto text-gray-700">
-              <p className="mb-6">
-                Thank you for visiting our website! We would be delighted to have you, your friends, 
-                and your family visit with us for worship and Bible study. We strive to live and 
-                worship God as He instructed in His inspired Word, the Bible. Everything we do is 
-                founded on this principle.
-              </p>
-              <p className="mb-6">
-                Churches of Christ are autonomous congregations across the United States and 
-                throughout the world. We are not denominational or even non-denominational; we are 
-                simply "Christians" following the pattern of the first century Christians. Our work 
-                as Christians is to share the gospel with those who have an ear for the truth (the 
-                "Good News" of Jesus Christ). We invite all sincere seekers of God to join us as we 
-                strive to walk by faith and glorify God.
-              </p>
-              <blockquote className="border-l-4 border-church-blue pl-6 italic text-lg">
-                "Come, you children, listen to me; I will teach you the fear of the Lord. Who is 
-                the man who desires life, And loves many days, that he may see good? Keep your 
-                tongue from evil, And your lips from speaking deceit. Depart from evil and do good; 
-                Seek peace and pursue it." — Psalm 34:11-14
-              </blockquote>
-            </div>
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-church-gold font-bold tracking-[0.14em] text-sm uppercase">
+            Farmers Branch, Texas
+          </p>
+          <h1 className="font-questrial text-3xl md:text-4xl text-church-blue mt-2 mb-4">
+            You're invited
+          </h1>
+          <p className="max-w-xl mx-auto text-lg text-gray-600 leading-relaxed">
+            Simply Christians, following the pattern of the first century church. Come as you
+            are and worship with us.
+          </p>
+
+          <blockquote className="relative max-w-3xl mx-auto my-10 px-8 py-7 bg-church-blue text-white rounded-xl text-xl italic leading-relaxed">
+            <span
+              aria-hidden="true"
+              className="absolute -top-1 left-4 text-7xl leading-none text-church-gold not-italic font-serif"
+            >
+              &ldquo;
+            </span>
+            Come, you children, listen to me; I will teach you the fear of the Lord. Depart from
+            evil and do good; seek peace and pursue it.
+            <cite className="block mt-3 text-base not-italic font-bold text-church-gold">
+              Psalm 34:11&ndash;14
+            </cite>
+          </blockquote>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
+            <Link
+              to="/imnewhere"
+              className="block p-5 border-2 border-gray-200 rounded-xl text-church-blue font-bold hover:border-church-gold hover:shadow-md transition"
+            >
+              Plan your visit
+              <span className="block mt-1 text-sm font-normal text-gray-600">
+                Times, what to expect
+              </span>
+            </Link>
+            <Link
+              to="/livestreaming"
+              className="block p-5 border-2 border-gray-200 rounded-xl text-church-blue font-bold hover:border-church-gold hover:shadow-md transition"
+            >
+              Watch live
+              <span className="block mt-1 text-sm font-normal text-gray-600">
+                Sundays at 9:30 AM
+              </span>
+            </Link>
+            <Link
+              to="/smallgroups"
+              className="block p-5 border-2 border-gray-200 rounded-xl text-church-blue font-bold hover:border-church-gold hover:shadow-md transition"
+            >
+              Small groups
+              <span className="block mt-1 text-sm font-normal text-gray-600">
+                Find one near you
+              </span>
+            </Link>
           </div>
         </div>
       </section>
