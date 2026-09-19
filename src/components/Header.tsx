@@ -107,12 +107,45 @@ function Header() {
 
             {/* Desktop Right Navigation */}
             <nav className="hidden md:flex items-center space-x-6">
-              <Link 
-                to="/smallgroups" 
-                className="text-gray-800 hover:text-church-blue font-semibold transition-colors"
-              >
-                SMALL GROUPS
-              </Link>
+              {/* Ministries Dropdown */}
+              <div className="relative group">
+                <button className="flex items-center text-gray-800 hover:text-church-blue font-semibold transition-colors">
+                  MINISTRIES
+                  <ChevronDown className="ml-1 h-4 w-4" />
+                </button>
+                <div className="absolute top-full left-0 mt-1 w-64 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                  <Link
+                    to="/smallgroups"
+                    className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
+                  >
+                    SMALL GROUPS
+                  </Link>
+                  <Link
+                    to="/missionaries"
+                    className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
+                  >
+                    MISSIONARIES
+                  </Link>
+                  <Link
+                    to="/summerlearningcamp"
+                    className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
+                  >
+                    SUMMER LEARNING CAMP
+                  </Link>
+                  <Link
+                    to="/sitb"
+                    className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
+                  >
+                    STUDIES IN THE BIBLE
+                  </Link>
+                  <Link
+                    to="/ministries"
+                    className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
+                  >
+                    ALL MINISTRIES
+                  </Link>
+                </div>
+              </div>
               
               {/* Members Dropdown */}
               <div className="relative group">
@@ -133,12 +166,6 @@ function Header() {
                   >
                     GIVING
                   </Link>
-                  <Link 
-                    to="/summerlearningcamp" 
-                    className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
-                  >
-                    SUMMER CAMP
-                  </Link>
                   <a 
                     href="https://onrealm.org/WebbChapelChurch" 
                     target="_blank" 
@@ -155,6 +182,13 @@ function Header() {
                 className="text-gray-800 hover:text-church-blue font-semibold transition-colors"
               >
                 CONTACT
+              </Link>
+
+              <Link
+                to="/imnewhere"
+                className="whitespace-nowrap bg-church-gold hover:bg-church-blue text-church-blue hover:text-white font-bold px-5 py-2 rounded-md shadow transition-colors"
+              >
+                I'M NEW HERE
               </Link>
             </nav>
 
@@ -231,13 +265,46 @@ function Header() {
                 </div>
               </div>
               
-              <Link 
-                to="/smallgroups" 
-                className="block text-gray-800 hover:text-church-blue font-semibold transition-colors py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                SMALL GROUPS
-              </Link>
+              <div className="space-y-2">
+                <div className="text-gray-800 font-semibold py-2">MINISTRIES</div>
+                <div className="pl-4 space-y-2">
+                  <Link
+                    to="/smallgroups"
+                    className="block text-gray-600 hover:text-church-blue transition-colors py-1"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    SMALL GROUPS
+                  </Link>
+                  <Link
+                    to="/missionaries"
+                    className="block text-gray-600 hover:text-church-blue transition-colors py-1"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    MISSIONARIES
+                  </Link>
+                  <Link
+                    to="/summerlearningcamp"
+                    className="block text-gray-600 hover:text-church-blue transition-colors py-1"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    SUMMER LEARNING CAMP
+                  </Link>
+                  <Link
+                    to="/sitb"
+                    className="block text-gray-600 hover:text-church-blue transition-colors py-1"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    STUDIES IN THE BIBLE
+                  </Link>
+                  <Link
+                    to="/ministries"
+                    className="block text-gray-600 hover:text-church-blue transition-colors py-1"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    ALL MINISTRIES
+                  </Link>
+                </div>
+              </div>
               
               <div className="space-y-2">
                 <div className="text-gray-800 font-semibold py-2">MEMBERS</div>
@@ -255,13 +322,6 @@ function Header() {
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     GIVING
-                  </Link>
-                  <Link 
-                    to="/summerlearningcamp" 
-                    className="block text-gray-600 hover:text-church-blue transition-colors py-1"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    SUMMER CAMP
                   </Link>
                   <a 
                     href="https://onrealm.org/WebbChapelChurch" 
@@ -282,6 +342,14 @@ function Header() {
               >
                 CONTACT
               </Link>
+
+              <Link
+                to="/imnewhere"
+                className="block text-center bg-church-gold hover:bg-church-blue text-church-blue hover:text-white font-bold px-5 py-3 rounded-md shadow transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                I'M NEW HERE
+              </Link>
             </nav>
           </div>
         </div>
@@ -289,7 +357,13 @@ function Header() {
 
       {/* Contact Bar */}
       <div className="w-full text-center church-blue-background text-white font-bold py-2">
-        13425 Webb Chapel Road, Farmers Branch, Texas 75234&nbsp;&nbsp;|&nbsp;&nbsp;(972) 241-3293
+        <Link to="/contact" className="hover:underline">
+          13425 Webb Chapel Road, Farmers Branch, Texas 75234
+        </Link>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="tel:+19722413293" className="hover:underline">
+          (972) 241-3293
+        </a>
       </div>
     </>
   );

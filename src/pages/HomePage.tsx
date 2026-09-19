@@ -1,14 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import HeroSlider from '../components/HeroSlider';
 import { getImagePath } from '../utils/assets';
 
 const HomePage: React.FC = () => {
   return (
     <div className="w-full">
-      {/* Hero Slider Section */}
+      {/* Hero Image Section */}
       <section className="relative">
-        <HeroSlider />
+        <img
+          src={getImagePath('slider3.jpg')}
+          alt="Our Vision: Living Transformed Through Christ To Serve. Our Mission: We glorify God by Loving one another, Reaching out to others, Walking in His way"
+          className="w-full h-auto"
+        />
       </section>
 
       {/* Welcome Section */}
