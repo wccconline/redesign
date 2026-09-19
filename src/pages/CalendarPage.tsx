@@ -67,7 +67,7 @@ const CalendarPage: React.FC = () => {
               {/* Calendar Embed - Responsive Container */}
               <div className="relative w-full" style={{ paddingBottom: '75%' }}>
                 <iframe
-                  src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FChicago&showPrint=0&src=bWFydHlyZWFjaDUxQGdtYWlsLmNvbQ&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23039be5&color=%230b8043"
+                  src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FChicago&showPrint=0&src=d2NjY29ubGluZUB3ZWJiY2hhcGVsLm9yZw&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23039be5&color=%230b8043"
                   className="absolute top-0 left-0 w-full h-full rounded-lg border-0"
                   title="Church Calendar"
                 />
