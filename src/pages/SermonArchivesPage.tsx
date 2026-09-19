@@ -1,5 +1,5 @@
 import React from 'react';
-import { Archive } from 'lucide-react';
+import { Archive, ExternalLink } from 'lucide-react';
 
 const archives = [
   {
@@ -52,6 +52,15 @@ const SermonArchivesPage: React.FC = () => {
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 />
               </div>
+              <a
+                href={`https://www.youtube.com/playlist?list=${playlist}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center mt-4 text-church-blue font-semibold hover:underline"
+              >
+                View the full {year} playlist on YouTube
+                <ExternalLink className="w-4 h-4 ml-2" />
+              </a>
             </div>
           </div>
         ))}
