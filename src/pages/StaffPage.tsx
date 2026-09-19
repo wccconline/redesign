@@ -3,27 +3,15 @@ import { getImagePath } from '../utils/assets';
 function StaffPage() {
   const staff = [
     {
-      name: "Maricela Obiedo",
+      name: "Crissy Ketchersid",
       title: "Financial Secretary",
-      image: getImagePath('leadership/staff/staff-maricelaobiedo.jpg'),
-      bio: "Maricela handles the financial operations and administrative tasks for our church. She ensures that all financial matters are handled with integrity and transparency.",
+      image: getImagePath('leadership/placeholder.svg'),
+      bio: "Crissy handles the financial operations and administrative tasks for our church. She ensures that all financial matters are handled with integrity and transparency.",
       responsibilities: [
         "Financial record keeping",
         "Budget management",
         "Administrative support",
         "Office coordination"
-      ]
-    },
-    {
-      name: "Carolyn Fisher",
-      title: "Administrative Assistant",
-      image: getImagePath('leadership/staff/staff-carolynfisher.jpg'),
-      bio: "Carolyn provides essential administrative support to our church operations, helping to keep everything running smoothly.",
-      responsibilities: [
-        "Office administration",
-        "Event coordination",
-        "Member communication",
-        "General support"
       ]
     }
   ];

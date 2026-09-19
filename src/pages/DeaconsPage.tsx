@@ -10,7 +10,7 @@ const DeaconsPage: React.FC = () => {
     },
     {
       name: "Roger Daw",
-      image: getImagePath('leadership/deacons/placeholder.svg'),
+      image: getImagePath('leadership/placeholder.svg'),
       bio: "Bio coming soon."
     },
     {
@@ -25,7 +25,7 @@ const DeaconsPage: React.FC = () => {
     },
     {
       name: "Chris Faulkner",
-      image: getImagePath('leadership/deacons/placeholder.svg'),
+      image: getImagePath('leadership/placeholder.svg'),
       bio: "Bio coming soon."
     },
     {
@@ -35,7 +35,7 @@ const DeaconsPage: React.FC = () => {
     },
     {
       name: "Rob Keith",
-      image: getImagePath('leadership/deacons/placeholder.svg'),
+      image: getImagePath('leadership/placeholder.svg'),
       bio: "Bio coming soon."
     },
     {
@@ -45,12 +45,12 @@ const DeaconsPage: React.FC = () => {
     },
     {
       name: "Ryan Nienstadt",
-      image: getImagePath('leadership/deacons/placeholder.svg'),
+      image: getImagePath('leadership/placeholder.svg'),
       bio: "Bio coming soon."
     },
     {
       name: "Marty Reach",
-      image: getImagePath('leadership/deacons/placeholder.svg'),
+      image: getImagePath('leadership/placeholder.svg'),
       bio: "Bio coming soon."
     },
     {

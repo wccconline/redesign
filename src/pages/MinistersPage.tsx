@@ -11,12 +11,12 @@ function MinistersPage() {
       experience: "Before coming to Webb Chapel, he served on staff for twenty years, in various ministry positions at the Greenville Oaks Church in Allen, TX. He currently serves as director of James Group Ministries."
     },
     {
-      name: "David Bates",
-      title: "Outreach Minister",
-      image: getImagePath('leadership/ministers/outreachMinisterDavidBates.jpg'),
-      bio: "David Bates serves as our outreach minister, focusing on community engagement and evangelism efforts.",
-      education: "Bachelor of Arts in Ministry from Abilene Christian University",
-      experience: "Extensive experience in community outreach, evangelism, and church growth strategies."
+      name: "Harmon Hale",
+      title: "Youth Minister",
+      image: getImagePath('leadership/ministers/youthministerHaleHarmon.jpg'),
+      bio: "Harmon Hale grew up in Lewisville, Texas where he met his wife Charisma. The two were married on July 12, 2021.",
+      education: "Bachelor of Science degree in Bible with emphasis in Youth and Family Ministry and Apologetics from Freed-Hardeman University, graduating in 2020.",
+      experience: "Joined Webb Chapel in August of 2022 as Youth Minister."
     }
   ];
 
