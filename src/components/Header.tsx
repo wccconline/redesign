@@ -189,13 +189,6 @@ function Header() {
               >
                 CONTACT
               </Link>
-
-              <Link
-                to="/imnewhere"
-                className="whitespace-nowrap bg-church-gold hover:bg-church-blue text-church-blue hover:text-white font-bold px-5 py-2 rounded-md shadow transition-colors"
-              >
-                I'M NEW HERE
-              </Link>
             </nav>
 
             {/* Spacer for mobile to balance the hamburger button */}
@@ -354,14 +347,6 @@ function Header() {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 CONTACT
-              </Link>
-
-              <Link
-                to="/imnewhere"
-                className="block text-center bg-church-gold hover:bg-church-blue text-church-blue hover:text-white font-bold px-5 py-3 rounded-md shadow transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                I'M NEW HERE
               </Link>
             </nav>
           </div>

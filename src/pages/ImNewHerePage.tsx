@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { MapPin, Clock, Users, BookOpen } from 'lucide-react';
 
 const ImNewHerePage: React.FC = () => {
@@ -129,12 +130,12 @@ const ImNewHerePage: React.FC = () => {
               >
                 Call Us: (972) 241-3293
               </a>
-              <a 
-                href="/contact"
+              <Link 
+                to="/contact"
                 className="bg-white text-church-blue px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
               >
                 Send Us a Message
-              </a>
+              </Link>
             </div>
           </div>
         </div>

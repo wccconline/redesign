@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { getImagePath } from '../utils/assets';
 import { Calendar, Clock, Users, BookOpen, Music, Utensils } from 'lucide-react';
 
@@ -184,18 +185,18 @@ const SummerLearningCampPage: React.FC = () => {
               Contact us for more information or to register your child for the Summer Learning Camp.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="/contact" 
+              <Link 
+                to="/contact" 
                 className="bg-church-blue text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
               >
                 Contact Us
-              </a>
-              <a 
-                href="/imnewhere" 
+              </Link>
+              <Link 
+                to="/imnewhere" 
                 className="bg-gray-200 text-gray-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
               >
                 Learn More
-              </a>
+              </Link>
             </div>
           </div>
         </div>
