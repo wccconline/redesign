@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is the Webb Chapel Church of Christ website — a React 19 SPA built with Vite, TypeScript, and Tailwind CSS v4. It deploys to GitHub Pages at `https://wccconline.github.io/redesign/` (base path `/redesign/`, set as `base` in `vite.config.ts`). Locally, `npm run dev` serves the site at `http://localhost:5173/redesign/`.
 
-**Deployment:** pushing to `master` runs `.github/workflows/deploy.yml`, which builds with `npm run build` and publishes `dist/` to GitHub Pages. In the repo's Settings → Pages, the source must be set to **GitHub Actions** (not "Deploy from a branch"), otherwise the raw source files are served and the page is blank. GitHub Pages caches responses for about 10 minutes, so hard-refresh after a deploy. When the site moves to webbchapel.org, change `base` in `vite.config.ts` to match the new path (likely `/`).
+**Deployment:** pushing to `master` runs `.github/workflows/deploy.yml`, which builds with `npm run build` and publishes `dist/` to GitHub Pages. The workflow also copies `dist/index.html` to `dist/404.html`, because GitHub Pages has no SPA routing; without it, refreshing or directly visiting any page other than the home page shows GitHub's "Page not found". In the repo's Settings → Pages, the source must be set to **GitHub Actions** (not "Deploy from a branch"), otherwise the raw source files are served and the page is blank. GitHub Pages caches responses for about 10 minutes, so hard-refresh after a deploy. When the site moves to webbchapel.org, change `base` in `vite.config.ts` to match the new path (likely `/`).
 
 ## Commands
 
