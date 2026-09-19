@@ -23,7 +23,7 @@ const EldersPage: React.FC = () => {
       bio: "Steve came to Webb Chapel in 1976 with his family. He and his wife, Barbara, have been active in the teaching program, children's ministry, and other areas. Steve served as a Deacon before he was selected to be an Elder in 2000. He has worked for Oncor for 40 years and is a Distribution Services Advisor. Steve & Barbara are the parents of a daughter, Kami & husband Kelly Terashita, and a son, Grant & wife Vanessa. The Mankins have six grandchildren."
     },
     {
-      name: "Bob Neinstadt",
+      name: "Bob Nienstadt",
       image: "images/leadership/elderBobNienstadt.jpg",
       bio: "Bob and his wife Linda came to Webb Chapel in 1998. Bob has been involved in teaching adult classes at Webb Chapel as well as occasionally leading singing and preaching, and Bob and Linda have served as Care Group Leaders. Bob served in the US Air Force for three years. He is a graduate of the Preston Road School of Preaching and preached in a Texas congregation for eight years. Bob is currently serving on the Board of Regents of Nations University. He and Linda are the parents of Trudy Zarnowiec, Ryan Nienstadt, and Leslie Wertz. They have four grandchildren, and one great grandson."
     }
@@ -32,10 +32,10 @@ const EldersPage: React.FC = () => {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-church-blue to-blue-800 text-white py-16">
+      <div className="pt-12">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-800">
               Our Shepherds
             </h1>
           

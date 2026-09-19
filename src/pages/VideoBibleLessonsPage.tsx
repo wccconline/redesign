@@ -19,10 +19,10 @@ const lessons = [
 const VideoBibleLessonsPage: React.FC = () => {
   return (
     <div className="w-full">
-      <div className="bg-gradient-to-r from-church-blue to-blue-800 text-white py-16">
+      <div className="pt-12">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Video Bible Lessons</h1>
-          <p className="text-xl md:text-2xl text-blue-100">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Video Bible Lessons</h1>
+          <p className="text-xl md:text-2xl text-gray-600">
             Watch short lessons on the Bible at your own pace
           </p>
         </div>

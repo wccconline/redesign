@@ -7,13 +7,13 @@ const SitbPage: React.FC = () => {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-church-blue to-blue-800 text-white py-16">
+      <div className="pt-12">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
               SITB - Studies in the Bible
             </h1>
-            <p className="text-xl md:text-2xl text-blue-100">
+            <p className="text-xl md:text-2xl text-gray-600">
               Deepen your understanding of God's Word
             </p>
           </div>
