@@ -1,9 +1,11 @@
+import { getImagePath } from '../utils/assets';
+
 function MinistersPage() {
   const ministers = [
     {
       name: "Galon Jones",
       title: "Pulpit Minister",
-      image: "images/leadership/ministers/pulpitMinisterGalonJones.jpg",
+      image: getImagePath('leadership/ministers/pulpitMinisterGalonJones.jpg'),
       bio: "Galon Jones grew up in the north Dallas area. He has been married to Sharon for over forty years and has three children and five grandchildren. He has a BS in Theology from Harding University. He has master's degrees in Theology, Marriage and Family Therapy, Conflict Resolution, Mediation, Negotiation and Divorce Mediation from Abilene Christian University. He served over 10 years church planting in Florianopolis, Brasil.",
       education: "BS in Theology from Harding University. Master's degrees in Theology, Marriage and Family Therapy, Conflict Resolution, Mediation, Negotiation and Divorce Mediation from Abilene Christian University.",
       experience: "Before coming to Webb Chapel, he served on staff for twenty years, in various ministry positions at the Greenville Oaks Church in Allen, TX. He currently serves as director of James Group Ministries."
@@ -11,7 +13,7 @@ function MinistersPage() {
     {
       name: "David Bates",
       title: "Outreach Minister",
-      image: "images/leadership/ministers/outreachMinisterDavidBates.jpg",
+      image: getImagePath('leadership/ministers/outreachMinisterDavidBates.jpg'),
       bio: "David Bates serves as our outreach minister, focusing on community engagement and evangelism efforts.",
       education: "Bachelor of Arts in Ministry from Abilene Christian University",
       experience: "Extensive experience in community outreach, evangelism, and church growth strategies."
