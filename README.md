@@ -11,7 +11,6 @@ A modern React application for the Webb Chapel Church of Christ website, built w
   - Google Maps embedding
   - Cognito Forms for contact forms
   - Christian World Media for live streaming
-  - Mailchimp for email subscriptions
 - **SEO Optimized**: Proper meta tags and semantic HTML
 - **Performance Optimized**: Code splitting and lazy loading
 
@@ -24,8 +23,7 @@ react-app/
 │   │   ├── Header.tsx      # Navigation header
 │   │   ├── Footer.tsx      # Site footer
 │   │   ├── Layout.tsx      # Page layout wrapper
-│   │   ├── CognitoForm.tsx # Contact form integration
-│   │   └── MailchimpForm.tsx # Email subscription form
+│   │   └── CognitoForm.tsx # Contact form integration
 │   ├── pages/              # Page components
 │   │   ├── HomePage.tsx    # Homepage
 │   │   ├── ContactPage.tsx # Contact information
@@ -165,11 +163,6 @@ theme: {
 - Live streaming of worship services
 - Sermon archive access
 - Embedded via iframe
-
-### Mailchimp
-- Email subscription management
-- Newsletter signup forms
-- Custom integration component
 
 ## 🚀 Deployment
 

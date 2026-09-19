@@ -111,10 +111,6 @@ VITE_APP_URL=http://localhost:5173
    - Live streaming and sermon archives
    - Embedded via iframe, no API key required
 
-4. **Mailchimp**
-   - Email subscription service
-   - Configure in MailchimpForm component
-
 ## Performance Optimization
 
 ### Build Optimizations
@@ -147,7 +143,7 @@ VITE_APP_URL=http://localhost:5173
 Add CSP headers to prevent XSS attacks:
 
 ```html
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.cognitoforms.com https://www.christianworldmedia.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://webbchapel.us19.list-manage.com;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.cognitoforms.com https://www.christianworldmedia.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';">
 ```
 
 ### HTTPS
