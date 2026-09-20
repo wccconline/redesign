@@ -1,7 +1,9 @@
 import React from 'react';
 import { getImagePath } from '../utils/assets';
+import { usePageMeta } from '../utils/usePageMeta';
 
 const EldersPage: React.FC = () => {
+  usePageMeta('Shepherds', 'Meet the shepherds (elders) who oversee the Webb Chapel church of Christ in Farmers Branch, Texas.');
   const elders = [
     {
       name: "Greg Chandler",

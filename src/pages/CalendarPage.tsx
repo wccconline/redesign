@@ -1,7 +1,9 @@
 import React from 'react';
 import { Calendar, Clock, MapPin, ExternalLink } from 'lucide-react';
+import { usePageMeta } from '../utils/usePageMeta';
 
 const CalendarPage: React.FC = () => {
+  usePageMeta('Calendar', 'See upcoming events and activities at Webb Chapel church of Christ, including worship, Bible classes and small groups.');
   const upcomingEvents = [
     {
       title: "Sunday Worship Service",

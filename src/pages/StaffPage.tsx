@@ -1,6 +1,8 @@
 import { getImagePath } from '../utils/assets';
+import { usePageMeta } from '../utils/usePageMeta';
 
 function StaffPage() {
+  usePageMeta('Staff', 'Meet the staff of Webb Chapel church of Christ in Farmers Branch, Texas.');
   const staff = [
     {
       name: "Crissy Ketchersid",

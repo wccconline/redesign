@@ -1,8 +1,10 @@
 import React from 'react';
 import { Archive, ExternalLink } from 'lucide-react';
 import { archives } from '../utils/sermonArchives';
+import { usePageMeta } from '../utils/usePageMeta';
 
 const SermonArchivesPage: React.FC = () => {
+  usePageMeta('Sermon Archives', 'Browse past sermons and services from Webb Chapel church of Christ, organized by year in YouTube playlists.');
   return (
     <div className="w-full">
       <div className="pt-12">

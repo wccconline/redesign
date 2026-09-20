@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Clock, Users, BookOpen } from 'lucide-react';
+import { usePageMeta } from '../utils/usePageMeta';
 
 const ImNewHerePage: React.FC = () => {
+  usePageMeta("I'm New Here", 'New to Webb Chapel church of Christ? Learn who we are, what to expect at worship, and our Sunday service times in Farmers Branch, Texas.');
   return (
     <div className="py-16">
       <div className="container mx-auto px-4">

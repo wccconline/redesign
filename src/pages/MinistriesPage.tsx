@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { getImagePath } from '../utils/assets';
+import { usePageMeta } from '../utils/usePageMeta';
 
 interface AccordionItem {
   title: string;
@@ -10,6 +11,7 @@ interface AccordionItem {
 }
 
 const MinistriesPage: React.FC = () => {
+  usePageMeta('Ministries', "Learn about the ministries of Webb Chapel church of Christ, including Studies in the Bible, ESL classes, Ladies Ministry and Children's Ministry.");
   const [expandedItems, setExpandedItems] = useState<number[]>([]);
 
   const ministries: AccordionItem[] = [

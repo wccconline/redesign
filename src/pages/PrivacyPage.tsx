@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { usePageMeta } from '../utils/usePageMeta';
 
 const linkClass = 'text-church-blue underline hover:text-blue-800';
 
 const PrivacyPage: React.FC = () => {
+  usePageMeta('Privacy Notice', 'How the Webb Chapel church of Christ website collects and uses information, including analytics, forms and embedded content.');
   return (
     <div className="w-full">
       <div className="pt-12">

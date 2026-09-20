@@ -1,6 +1,8 @@
 import { getImagePath } from '../utils/assets';
+import { usePageMeta } from '../utils/usePageMeta';
 
 function MinistersPage() {
+  usePageMeta('Ministers', 'Meet the ministers of Webb Chapel church of Christ, including our pulpit minister and youth minister.');
   const ministers = [
     {
       name: "Galon Jones",

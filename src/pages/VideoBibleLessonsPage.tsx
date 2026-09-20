@@ -1,5 +1,6 @@
 import React from 'react';
 import { Video } from 'lucide-react';
+import { usePageMeta } from '../utils/usePageMeta';
 
 const lessons = [
   {
@@ -17,6 +18,7 @@ const lessons = [
 ];
 
 const VideoBibleLessonsPage: React.FC = () => {
+  usePageMeta('Video Bible Lessons', 'Watch short video Bible lessons from Webb Chapel church of Christ, including Searching for Truth and What Must I Do To Be Saved?');
   return (
     <div className="w-full">
       <div className="pt-12">

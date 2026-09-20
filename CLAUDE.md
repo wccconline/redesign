@@ -26,6 +26,8 @@ There is no test suite — `type-check` and `lint` are the only automated checks
 
 **Routing:** `src/App.tsx` configures React Router v7 with `BrowserRouter` using `basename={import.meta.env.BASE_URL}`. All routes are wrapped in `<Layout>`, which provides the shared `<Header>` and `<Footer>`.
 
+**Page titles and descriptions:** every page component calls `usePageMeta(title, description)` (from `src/utils/usePageMeta.ts`) at the top, which sets the tab title ("<title> | Webb Chapel Church of Christ") and the meta description. Add it to any new page; keep titles short and descriptions around 100-155 characters. The static title/description in `index.html` are the fallback for crawlers that don't run JavaScript.
+
 **Pages vs Components:** Each URL route has a corresponding file in `src/pages/`. Reusable UI lives in `src/components/`. No global state management — only local `useState` where needed.
 
 **Asset paths:** Always use `getImagePath()` / `getAssetPath()` from `src/utils/assets.ts` for any image or asset references. This handles the base URL prefix (`/redesign/`) required for GitHub Pages deployment. Do not hardcode paths starting with `/`, and do not use plain relative paths like `images/...`. Images live in `public/images/`; leadership team photos are in `public/images/leadership/` (with `deacons/`, `ministers/` and `staff/` subfolders) and a shared `leadership/placeholder.svg`. PDFs live in `public/pdf/`.

@@ -1,7 +1,9 @@
 import React from 'react';
 import { Globe, Smartphone, MessageSquare, Mail, ExternalLink } from 'lucide-react';
+import { usePageMeta } from '../utils/usePageMeta';
 
 const GivingPage: React.FC = () => {
+  usePageMeta('Giving', 'Ways to give to Webb Chapel church of Christ, including online giving. Your generosity supports our worship, ministries and missions.');
   const givingMethods = [
     {
       icon: Globe,

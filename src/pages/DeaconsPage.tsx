@@ -1,7 +1,9 @@
 import React from 'react';
 import { getImagePath } from '../utils/assets';
+import { usePageMeta } from '../utils/usePageMeta';
 
 const DeaconsPage: React.FC = () => {
+  usePageMeta('Deacons', 'Meet the deacons who serve the Webb Chapel church of Christ congregation in Farmers Branch, Texas.');
   const deacons = [
     {
       name: "Dennis Bartley",

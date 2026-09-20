@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { getImagePath } from '../utils/assets';
 import { Calendar, Clock, Users, BookOpen, Music, Utensils } from 'lucide-react';
+import { usePageMeta } from '../utils/usePageMeta';
 
 const SummerLearningCampPage: React.FC = () => {
+  usePageMeta('Summer Learning Camp', 'A free summer learning camp for children at Webb Chapel church of Christ, with reading tutoring, science, character class, music and lunch.');
   return (
     <div className="w-full">
       {/* Hero Section */}

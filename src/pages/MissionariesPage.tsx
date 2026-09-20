@@ -1,6 +1,7 @@
 import React from 'react';
 import { ExternalLink } from 'lucide-react';
 import { getAssetPath, getImagePath } from '../utils/assets';
+import { usePageMeta } from '../utils/usePageMeta';
 
 interface Missionary {
   name: string;
@@ -11,6 +12,7 @@ interface Missionary {
 }
 
 const MissionariesPage: React.FC = () => {
+  usePageMeta('Missionaries', 'Meet the missionaries supported by Webb Chapel church of Christ and read their reports.');
   const missionaries: Missionary[] = [
     {
       name: "Herman and Rosanne Alexander",

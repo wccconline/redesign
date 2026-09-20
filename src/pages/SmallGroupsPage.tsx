@@ -1,6 +1,8 @@
 import { Phone, Users, Clock, MapPin } from 'lucide-react';
+import { usePageMeta } from '../utils/usePageMeta';
 
 function SmallGroupsPage() {
+  usePageMeta('Small Groups', 'Join a Webb Chapel small group for Bible study, prayer and fellowship. Groups meet Sunday afternoons and evenings at various locations.');
   return (
     <div className="py-16">
       <div className="container mx-auto px-4">

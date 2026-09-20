@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Play, Archive, Calendar, Clock } from 'lucide-react';
 import { archiveYearRange } from '../utils/sermonArchives';
+import { usePageMeta } from '../utils/usePageMeta';
 
 const LiveStreamingPage: React.FC = () => {
+  usePageMeta('Live Stream Sunday Worship', 'Watch Sunday worship from Webb Chapel church of Christ live on YouTube, every Sunday at 9:30 AM. No registration required.');
   return (
     <div className="w-full">
       {/* Hero Section */}

@@ -1,8 +1,10 @@
 import React from 'react';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import ContactForm from '../components/ContactForm';
+import { usePageMeta } from '../utils/usePageMeta';
 
 const ContactPage: React.FC = () => {
+  usePageMeta('Contact & Directions', 'Contact Webb Chapel church of Christ at 13425 Webb Chapel Road, Farmers Branch, Texas 75234. Call (972) 241-3293, send a message, or get directions.');
   return (
     <div className="w-full">
       {/* Google Maps Embed */}

@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { getImagePath } from '../utils/assets';
+import { usePageMeta } from '../utils/usePageMeta';
 
 const HomePage: React.FC = () => {
+  usePageMeta(undefined, 'Webb Chapel church of Christ in Farmers Branch, Texas. Join us Sundays at 9:30 AM for worship and Bible classes, or watch our livestream online.');
   return (
     <div className="w-full">
       {/* Hero Image Section */}

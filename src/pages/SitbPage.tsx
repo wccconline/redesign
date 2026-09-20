@@ -2,8 +2,10 @@ import React from 'react';
 import { getImagePath } from '../utils/assets';
 import { BookOpen, Mail, Clock, Users } from 'lucide-react';
 import CognitoForm from '../components/CognitoForm';
+import { usePageMeta } from '../utils/usePageMeta';
 
 const SitbPage: React.FC = () => {
+  usePageMeta('Studies in the Bible', 'Studies in the Bible is a 30-lesson Bible study course from Webb Chapel church of Christ. Learn about the course and sign up online.');
   return (
     <div className="w-full">
       {/* Hero Section */}
