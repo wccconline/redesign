@@ -97,7 +97,9 @@ let notFound = template;
 notFound = replaceOnce(notFound, /<link rel="canonical" href="[^"]*" \/>\n?/, '', 'canonical link');
 notFound = replaceOnce(notFound, /<meta property="og:url" content="[^"]*" \/>\n?/, '', 'og:url');
 notFound = replaceOnce(notFound, /<title>[^<]*<\/title>/, '<title>Page Not Found | Webb Chapel Church of Christ</title>', '<title>');
-notFound = replaceOnce(notFound, /<meta name="description" content="/, '<meta name="robots" content="noindex" />\n    <meta name="description" content="', 'meta description');
+if (!/<meta name="robots"/.test(notFound)) {
+  notFound = replaceOnce(notFound, /<meta name="description" content="/, '<meta name="robots" content="noindex" />\n    <meta name="description" content="', 'meta description');
+}
 await writeFile(join(distDir, '404.html'), notFound);
 
 // Redirect stubs for the old site's .html URLs (scripts/legacy-redirects.json), so
@@ -105,6 +107,8 @@ await writeFile(join(distDir, '404.html'), notFound);
 // Static hosts like GitHub Pages can't send real 301s, so each stub combines a
 // canonical link (tells search engines the new URL is the real one) with an instant
 // meta refresh and a script that also keeps any ?query or #hash.
+// Test builds are noindex; keep the redirect stubs out of search results too.
+const stubRobots = /<meta name="robots"/.test(template) ? '\n    <meta name="robots" content="noindex" />' : '';
 const legacy = JSON.parse(await readFile(join(root, 'scripts', 'legacy-redirects.json'), 'utf8'));
 for (const [oldFile, newPath] of Object.entries(legacy)) {
   if (!paths.includes(newPath)) {
@@ -115,7 +119,7 @@ for (const [oldFile, newPath] of Object.entries(legacy)) {
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Redirecting… | Webb Chapel Church of Christ</title>
+    <title>Redirecting… | Webb Chapel Church of Christ</title>${stubRobots}
     <link rel="canonical" href="${target}" />
     <meta http-equiv="refresh" content="0; url=${target}" />
     <script>location.replace(${JSON.stringify(target)} + location.search + location.hash);</script>

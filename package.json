@@ -11,7 +11,9 @@
     "lint:fix": "eslint . --fix",
     "preview": "vite preview",
     "serve": "vite preview --port 3000",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "build:live": "VITE_BASE=/ VITE_SITE_URL=https://webbchapel.org npm run build && node scripts/finalize-live-build.mjs webbchapel.org",
+    "verify:live": "node scripts/verify-live-build.mjs https://webbchapel.org"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.14",

@@ -10,8 +10,12 @@ import type { Plugin } from 'vite';
  * - substituted for `__SITE_URL__` in index.html (structured data, social tags), and
  * - made available to the build-time prerender as the `__SITE_URL__` constant,
  *   which writes the per-page canonical URLs and sitemap.xml (scripts/prerender.mjs).
+ *
+ * With `noindex: true` (the test site) every page also gets
+ * `<meta name="robots" content="noindex">`, so search engines don't index a
+ * second copy of the site.
  */
-export function seoPlugin(siteUrl: string): Plugin {
+export function seoPlugin(siteUrl: string, options: { noindex?: boolean } = {}): Plugin {
   const site = siteUrl.replace(/\/+$/, '');
 
   return {
@@ -23,7 +27,12 @@ export function seoPlugin(siteUrl: string): Plugin {
     transformIndexHtml: {
       order: 'pre',
       handler(html) {
-        return html.replaceAll('__SITE_URL__', site);
+        return {
+          html: html.replaceAll('__SITE_URL__', site),
+          tags: options.noindex
+            ? [{ tag: 'meta', attrs: { name: 'robots', content: 'noindex' }, injectTo: 'head' as const }]
+            : [],
+        };
       },
     },
   };

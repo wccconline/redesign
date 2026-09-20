@@ -1,0 +1,104 @@
+name: Deploy to webbchapel.org (manual)
+
+# Builds the site for the live domain and publishes it to a branch of the live repo
+# (wccconline/website). webbchapel.org keeps serving whichever branch is selected in
+# that repo's Settings -> Pages, so publishing to the `live` branch changes nothing on
+# the live site until Pages is switched to it. See GO-LIVE.md.
+#
+# Run it from the Actions tab. Leave "publish" off for a dry run that only builds and checks.
+
+on:
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: 'Publish to the live repo? (off = dry run: build and check only)'
+        type: boolean
+        default: false
+      branch:
+        description: 'Branch of wccconline/website to publish to'
+        type: string
+        default: live
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-live
+  cancel-in-progress: false
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    env:
+      VITE_FORMSPREE_ID: ${{ secrets.VITE_FORMSPREE_ID }}
+      VITE_GA_MEASUREMENT_ID: ${{ secrets.VITE_GA_MEASUREMENT_ID }}
+      BRANCH: ${{ inputs.branch }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - run: npm ci
+
+      # Builds for webbchapel.org (base path /, canonical URLs, sitemap, CNAME, robots.txt)
+      - run: npm run build:live
+
+      # Fails the run if anything still points at the test site, a page is noindex, etc.
+      - run: npm run verify:live
+
+      # Kept for a week so a dry run can be inspected
+      - uses: actions/upload-artifact@v4
+        with:
+          name: live-site
+          path: dist
+          include-hidden-files: true
+          retention-days: 7
+
+      - name: Publish to the live repo
+        if: ${{ inputs.publish }}
+        env:
+          LIVE_DEPLOY_KEY: ${{ secrets.LIVE_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+
+          # Never overwrite the old site (or another long-lived branch) by accident.
+          if ! [[ "$BRANCH" =~ ^[A-Za-z0-9._/-]+$ ]]; then
+            echo "Invalid branch name: $BRANCH"; exit 1
+          fi
+          case "$BRANCH" in
+            development|master|main|youtube|update-studies-in-bible|feature/*)
+              echo "Refusing to publish to '$BRANCH' - that branch holds the old site."; exit 1 ;;
+          esac
+          test -n "$LIVE_DEPLOY_KEY" || { echo "The LIVE_DEPLOY_KEY secret is missing."; exit 1; }
+
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$LIVE_DEPLOY_KEY" > ~/.ssh/live_deploy_key
+          chmod 600 ~/.ssh/live_deploy_key
+          export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/live_deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new"
+
+          cd dist
+          git init -q -b "$BRANCH"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Publish redesign ${GITHUB_SHA::7} to webbchapel.org"
+          git remote add live git@github.com:wccconline/website.git
+          git push --force live "HEAD:refs/heads/$BRANCH"
+
+          {
+            echo "### Published to \`wccconline/website\` branch \`$BRANCH\`"
+            echo
+            echo "Source commit: \`${GITHUB_SHA}\`"
+            echo
+            echo "The live site has **not** changed yet. To go live, set the Pages source of wccconline/website to branch \`$BRANCH\` (see GO-LIVE.md)."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Dry-run summary
+        if: ${{ !inputs.publish }}
+        run: |
+          {
+            echo "### Dry run: built and checked, nothing published"
+            echo
+            echo "The built site is attached to this run as the \`live-site\` artifact. Run again with **publish** on to publish it."
+          } >> "$GITHUB_STEP_SUMMARY"

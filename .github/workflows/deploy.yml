@@ -19,6 +19,8 @@ jobs:
     env:
       VITE_FORMSPREE_ID: ${{ secrets.VITE_FORMSPREE_ID }}
       VITE_GA_MEASUREMENT_ID: ${{ secrets.VITE_GA_MEASUREMENT_ID }}
+      # This is the test site: ask search engines not to index it (the live site is deployed by deploy-live.yml)
+      VITE_NOINDEX: 'true'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
