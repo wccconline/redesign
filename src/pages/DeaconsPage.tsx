@@ -23,10 +23,10 @@ const DeaconsPage: React.FC = () => {
     },
     {
       name: "Roger Daw",
-      image: getImagePath('leadership/placeholder.svg'),
+      image: getImagePath('leadership/deacons/deaconDawRoger.jpg'),
       bio: {
-        en: "Bio coming soon.",
-        es: "Biografía próximamente.",
+        en: "Roger has been a member at Webb Chapel since 1989, serving as a bible class teacher and on the Audio/Visual team, becoming a deacon in 2025. He was a CPA and internal auditor before retiring from The Dallas Morning News in 2024. Roger met his wife, Marcia, at Webb Chapel and they were married in 1997. They have 4 children and 6 grandchildren.",
+        es: "Roger es miembro de Webb Chapel desde 1989; ha servido como maestro de clases bíblicas y en el equipo de Audio y Video, y fue nombrado diácono en 2025. Fue contador público certificado (CPA) y auditor interno antes de jubilarse de The Dallas Morning News en 2024. Roger conoció a su esposa, Marcia, en Webb Chapel, y se casaron en 1997. Tienen 4 hijos y 6 nietos.",
       }
     },
     {
