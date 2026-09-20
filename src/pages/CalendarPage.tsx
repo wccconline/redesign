@@ -1,31 +1,51 @@
 import React from 'react';
 import { Calendar, Clock, MapPin, ExternalLink } from 'lucide-react';
+import { useT } from '../utils/i18n';
 import { usePageMeta } from '../utils/usePageMeta';
 
+const CALENDAR_URL =
+  'https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FChicago&showPrint=0&src=d2NjY29ubGluZUB3ZWJiY2hhcGVsLm9yZw&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23039be5&color=%230b8043';
+
 const CalendarPage: React.FC = () => {
-  usePageMeta('Calendar', 'See upcoming events and activities at Webb Chapel church of Christ, including worship, Bible classes and small groups.');
+  const t = useT();
+  usePageMeta(
+    t('Calendar', 'Calendario'),
+    t(
+      'See upcoming events and activities at Webb Chapel church of Christ, including worship, Bible classes and small groups.',
+      'Vea los próximos eventos y actividades de la iglesia de Cristo de Webb Chapel, incluyendo la adoración, las clases bíblicas y los grupos pequeños.',
+    ),
+  );
   const upcomingEvents = [
     {
-      title: "Sunday Worship Service",
-      date: "Every Sunday",
-      time: "10:30 AM",
-      location: "Main Sanctuary",
-      description: "Join us for our weekly worship service with preaching, singing, and fellowship."
+      title: { en: "Sunday Worship Service", es: "Servicio de Adoración del Domingo" },
+      date: { en: "Every Sunday", es: "Todos los domingos" },
+      time: { en: "10:30 AM", es: "10:30 a.m." },
+      location: { en: "Main Sanctuary", es: "Santuario Principal" },
+      description: {
+        en: "Join us for our weekly worship service with preaching, singing, and fellowship.",
+        es: "Acompáñenos en nuestro servicio semanal de adoración con predicación, cantos y compañerismo.",
+      },
     },
     {
-      title: "Bible Study",
-      date: "Every Sunday",
-      time: "9:30 AM",
-      location: "Various Rooms",
-      description: "Adult Bible study classes for all ages and levels."
+      title: { en: "Bible Study", es: "Estudio Bíblico" },
+      date: { en: "Every Sunday", es: "Todos los domingos" },
+      time: { en: "9:30 AM", es: "9:30 a.m." },
+      location: { en: "Various Rooms", es: "Varios salones" },
+      description: {
+        en: "Adult Bible study classes for all ages and levels.",
+        es: "Clases bíblicas para adultos, para todas las edades y niveles.",
+      },
     },
     {
-      title: "Small Groups",
-      date: "Various Days",
-      time: "Various Times",
-      location: "Homes & Church",
-      description: "Small group Bible studies and fellowship meetings."
-    }
+      title: { en: "Small Groups", es: "Grupos Pequeños" },
+      date: { en: "Various Days", es: "Varios días" },
+      time: { en: "Various Times", es: "Varios horarios" },
+      location: { en: "Homes & Church", es: "Hogares e iglesia" },
+      description: {
+        en: "Small group Bible studies and fellowship meetings.",
+        es: "Estudios bíblicos en grupos pequeños y reuniones de compañerismo.",
+      },
+    },
   ];
 
   return (
@@ -35,10 +55,10 @@ const CalendarPage: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-              Event Calendar
+              {t('Event Calendar', 'Calendario de Eventos')}
             </h1>
             <p className="text-xl md:text-2xl text-gray-600">
-              Stay connected with all our church activities and events
+              {t('Stay connected with all our church activities and events', 'Manténgase conectado con todas las actividades y eventos de nuestra iglesia')}
             </p>
           </div>
         </div>
@@ -51,10 +71,10 @@ const CalendarPage: React.FC = () => {
             <div className="bg-gray-50 px-6 py-4 border-b">
               <h2 className="text-2xl font-bold text-gray-800 flex items-center">
                 <Calendar className="w-6 h-6 mr-3" />
-                Church Calendar
+                {t('Church Calendar', 'Calendario de la Iglesia')}
               </h2>
               <p className="text-gray-600 mt-2">
-                View all upcoming events and activities
+                {t('View all upcoming events and activities', 'Vea todos los próximos eventos y actividades')}
               </p>
             </div>
             
@@ -62,9 +82,9 @@ const CalendarPage: React.FC = () => {
               {/* Calendar Embed - Responsive Container */}
               <div className="relative w-full" style={{ paddingBottom: '75%' }}>
                 <iframe
-                  src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FChicago&showPrint=0&src=d2NjY29ubGluZUB3ZWJiY2hhcGVsLm9yZw&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23039be5&color=%230b8043"
+                  src={t(CALENDAR_URL, `${CALENDAR_URL}&hl=es`)}
                   className="absolute top-0 left-0 w-full h-full rounded-lg border-0"
-                  title="Church Calendar"
+                  title={t('Church Calendar', 'Calendario de la Iglesia')}
                 />
               </div>
 
@@ -77,7 +97,7 @@ const CalendarPage: React.FC = () => {
                   className="inline-flex items-center bg-church-blue text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
                 >
                   <ExternalLink className="w-4 h-4 mr-2" />
-                  View Full Calendar
+                  {t('View Full Calendar', 'Ver el Calendario Completo')}
                 </a>
               </div>
             </div>
@@ -88,7 +108,7 @@ const CalendarPage: React.FC = () => {
         <div className="mb-12">
           <div className="bg-white rounded-lg shadow-lg p-8">
             <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-              Regular Weekly Events
+              {t('Regular Weekly Events', 'Eventos Semanales Regulares')}
             </h2>
             
             <div className="grid md:grid-cols-2 gap-6">
@@ -102,24 +122,24 @@ const CalendarPage: React.FC = () => {
                     </div>
                     <div className="flex-1">
                       <h3 className="text-lg font-bold text-gray-800 mb-2">
-                        {event.title}
+                        {t(event.title.en, event.title.es)}
                       </h3>
                       <div className="space-y-1 text-sm text-gray-600">
                         <div className="flex items-center">
                           <Calendar className="w-4 h-4 mr-2" />
-                          {event.date}
+                          {t(event.date.en, event.date.es)}
                         </div>
                         <div className="flex items-center">
                           <Clock className="w-4 h-4 mr-2" />
-                          {event.time}
+                          {t(event.time.en, event.time.es)}
                         </div>
                         <div className="flex items-center">
                           <MapPin className="w-4 h-4 mr-2" />
-                          {event.location}
+                          {t(event.location.en, event.location.es)}
                         </div>
                       </div>
                       <p className="text-gray-600 mt-3">
-                        {event.description}
+                        {t(event.description.en, event.description.es)}
                       </p>
                     </div>
                   </div>
@@ -132,31 +152,31 @@ const CalendarPage: React.FC = () => {
         {/* Special Events */}
         <div className="bg-gradient-to-r from-church-blue to-blue-800 text-white rounded-lg p-8 mb-12">
           <h2 className="text-3xl font-bold text-center mb-8">
-            Special Events
+            {t('Special Events', 'Eventos Especiales')}
           </h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="text-center">
               <Calendar className="w-12 h-12 mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-3">Holiday Services</h3>
+              <h3 className="text-xl font-bold mb-3">{t('Holiday Services', 'Servicios en Días Festivos')}</h3>
               <p className="text-blue-100">
-                Special worship services for Christmas, Easter, and other holidays
+                {t('Special worship services for Christmas, Easter, and other holidays', 'Servicios especiales de adoración para Navidad, Pascua y otros días festivos')}
               </p>
             </div>
             
             <div className="text-center">
               <Calendar className="w-12 h-12 mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-3">Community Events</h3>
+              <h3 className="text-xl font-bold mb-3">{t('Community Events', 'Eventos Comunitarios')}</h3>
               <p className="text-blue-100">
-                Outreach events, community service projects, and fellowship activities
+                {t('Outreach events, community service projects, and fellowship activities', 'Eventos de alcance, proyectos de servicio a la comunidad y actividades de compañerismo')}
               </p>
             </div>
             
             <div className="text-center">
               <Calendar className="w-12 h-12 mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-3">Educational Programs</h3>
+              <h3 className="text-xl font-bold mb-3">{t('Educational Programs', 'Programas Educativos')}</h3>
               <p className="text-blue-100">
-                Bible studies, seminars, and educational workshops for all ages
+                {t('Bible studies, seminars, and educational workshops for all ages', 'Estudios bíblicos, seminarios y talleres educativos para todas las edades')}
               </p>
             </div>
           </div>
@@ -165,11 +185,11 @@ const CalendarPage: React.FC = () => {
         {/* Calendar Admin */}
         <div className="bg-white rounded-lg shadow-lg p-8">
           <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-            Calendar Administration
+            {t('Calendar Administration', 'Administración del Calendario')}
           </h2>
           <div className="text-center">
             <p className="text-gray-600 mb-6">
-              For church leaders and staff who need to add or modify events on the calendar.
+              {t('For church leaders and staff who need to add or modify events on the calendar.', 'Para los líderes y el personal de la iglesia que necesitan agregar o modificar eventos en el calendario.')}
             </p>
             <a 
               href="https://www.webbchapel.org/calendar32/" 
@@ -178,7 +198,7 @@ const CalendarPage: React.FC = () => {
               className="inline-flex items-center bg-gray-200 text-gray-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
             >
               <ExternalLink className="w-4 h-4 mr-2" />
-              Calendar Admin Login
+              {t('Calendar Admin Login', 'Acceso de Administrador del Calendario')}
             </a>
           </div>
         </div>

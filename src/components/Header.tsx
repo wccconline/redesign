@@ -1,9 +1,25 @@
-import { Link } from 'react-router-dom';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import { Link } from './LocaleLink';
 import { getImagePath } from '../utils/assets';
+import { langFromPathname, localizedPath, stripLang, useT } from '../utils/i18n';
+import type { Lang } from '../utils/i18n';
+
+/** Link to the same page in the other language. */
+function LanguageSwitcher({ className, onClick }: { className: string; onClick?: () => void }) {
+  const { pathname } = useLocation();
+  const alt: Lang = langFromPathname(pathname) === 'es' ? 'en' : 'es';
+  const to = alt === 'es' ? localizedPath(pathname, 'es') : stripLang(pathname);
+  return (
+    <RouterLink to={to} lang={alt} hrefLang={alt} onClick={onClick} className={className}>
+      {alt === 'es' ? 'ESPAÑOL' : 'ENGLISH'}
+    </RouterLink>
+  );
+}
 
 function Header() {
+  const t = useT();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   return (
@@ -14,28 +30,21 @@ function Header() {
         style={{ backgroundImage: `url(${getImagePath('headerbg.jpg')})` }}
       >
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
             {/* Mobile Menu Button - Left side */}
             <button 
-              className="md:hidden p-2"
+              className="lg:hidden p-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
 
             {/* Desktop Left Navigation */}
-            <nav className="hidden md:flex items-center space-x-6">
-              <Link 
-                to="/" 
-                className="text-gray-800 hover:text-church-blue font-semibold transition-colors"
-              >
-                HOME
-              </Link>
-              
+            <nav className="hidden lg:flex items-center justify-end space-x-6">
               {/* Leadership Dropdown */}
               <div className="relative group">
                 <button className="flex items-center text-gray-800 hover:text-church-blue font-semibold transition-colors">
-                  LEADERSHIP
+                  {t('LEADERSHIP', 'LIDERAZGO')}
                   <ChevronDown className="ml-1 h-4 w-4" />
                 </button>
                 <div className="absolute top-full left-0 mt-1 w-48 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
@@ -43,25 +52,25 @@ function Header() {
                     to="/elders" 
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
                   >
-                    SHEPHERDS
+                    {t('SHEPHERDS', 'ANCIANOS')}
                   </Link>
                   <Link 
                     to="/deacons" 
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
                   >
-                    DEACONS
+                    {t('DEACONS', 'DIÁCONOS')}
                   </Link>
                   <Link 
                     to="/ministers" 
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
                   >
-                    MINISTERS
+                    {t('MINISTERS', 'MINISTROS')}
                   </Link>
                   <Link 
                     to="/staff" 
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
                   >
-                    STAFF
+                    {t('STAFF', 'EQUIPO')}
                   </Link>
                 </div>
               </div>
@@ -69,7 +78,7 @@ function Header() {
               {/* Livestream Dropdown */}
               <div className="relative group">
                 <button className="flex items-center text-gray-800 hover:text-church-blue font-semibold transition-colors">
-                  LIVESTREAM
+                  {t('LIVESTREAM', 'EN VIVO')}
                   <ChevronDown className="ml-1 h-4 w-4" />
                 </button>
                 <div className="absolute top-full left-0 mt-1 w-56 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
@@ -77,41 +86,27 @@ function Header() {
                     to="/livestreaming"
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
                   >
-                    LIVE STREAM
+                    {t('LIVE STREAM', 'TRANSMISIÓN EN VIVO')}
                   </Link>
                   <Link
                     to="/sermonarchives"
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
                   >
-                    SERMON ARCHIVES
+                    {t('SERMON ARCHIVES', 'ARCHIVO DE SERMONES')}
                   </Link>
                   <Link
                     to="/videobiblelessons"
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
                   >
-                    VIDEO BIBLE LESSONS
+                    {t('VIDEO BIBLE LESSONS', 'LECCIONES BÍBLICAS EN VIDEO')}
                   </Link>
                 </div>
               </div>
-            </nav>
 
-            {/* Logo - Centered on mobile, normal position on desktop */}
-            <div className="flex-shrink-0">
-              <Link to="/">
-                <img 
-                  src={getImagePath('logo.png')} 
-                  alt="Webb Chapel church of Christ" 
-                  className="h-20 w-auto"
-                />
-              </Link>
-            </div>
-
-            {/* Desktop Right Navigation */}
-            <nav className="hidden md:flex items-center space-x-6">
               {/* Ministries Dropdown */}
               <div className="relative group">
                 <button className="flex items-center text-gray-800 hover:text-church-blue font-semibold transition-colors">
-                  MINISTRIES
+                  {t('MINISTRIES', 'MINISTERIOS')}
                   <ChevronDown className="ml-1 h-4 w-4" />
                 </button>
                 <div className="absolute top-full left-0 mt-1 w-64 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
@@ -119,39 +114,53 @@ function Header() {
                     to="/smallgroups"
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
                   >
-                    SMALL GROUPS
+                    {t('SMALL GROUPS', 'GRUPOS PEQUEÑOS')}
                   </Link>
                   <Link
                     to="/missionaries"
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
                   >
-                    MISSIONARIES
+                    {t('MISSIONARIES', 'MISIONEROS')}
                   </Link>
                   <Link
                     to="/summerlearningcamp"
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
                   >
-                    SUMMER LEARNING CAMP
+                    {t('SUMMER LEARNING CAMP', 'CAMPAMENTO DE VERANO')}
                   </Link>
                   <Link
                     to="/sitb"
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
                   >
-                    STUDIES IN THE BIBLE
+                    {t('STUDIES IN THE BIBLE', 'ESTUDIOS BÍBLICOS')}
                   </Link>
                   <Link
                     to="/ministries"
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
                   >
-                    ALL MINISTRIES
+                    {t('ALL MINISTRIES', 'TODOS LOS MINISTERIOS')}
                   </Link>
                 </div>
               </div>
-              
+            </nav>
+
+            {/* Logo - centered on both mobile and desktop, with breathing room beside the menus */}
+            <div className="flex-shrink-0 lg:px-4 xl:px-8">
+              <Link to="/">
+                <img 
+                  src={getImagePath('logo.png')} 
+                  alt={t('Webb Chapel church of Christ', 'Iglesia de Cristo Webb Chapel')} 
+                  className="h-20 w-auto"
+                />
+              </Link>
+            </div>
+
+            {/* Desktop Right Navigation */}
+            <nav className="hidden lg:flex items-center justify-start space-x-6">
               {/* Members Dropdown */}
               <div className="relative group">
                 <button className="flex items-center text-gray-800 hover:text-church-blue font-semibold transition-colors">
-                  MEMBERS
+                  {t('MEMBERS', 'MIEMBROS')}
                   <ChevronDown className="ml-1 h-4 w-4" />
                 </button>
                 <div className="absolute top-full left-0 mt-1 w-48 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
@@ -159,13 +168,13 @@ function Header() {
                     to="/calendar" 
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
                   >
-                    CALENDAR
+                    {t('CALENDAR', 'CALENDARIO')}
                   </Link>
                   <Link 
                     to="/giving" 
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
                   >
-                    GIVING
+                    {t('GIVING', 'OFRENDAS')}
                   </Link>
                   <a 
                     href="https://onrealm.org/WebbChapelChurch" 
@@ -173,7 +182,7 @@ function Header() {
                     rel="noopener noreferrer"
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
                   >
-                    REALM LOGIN
+                    {t('REALM LOGIN', 'ACCESO A REALM')}
                   </a>
                 </div>
               </div>
@@ -182,147 +191,141 @@ function Header() {
                 to="/contact" 
                 className="text-gray-800 hover:text-church-blue font-semibold transition-colors"
               >
-                CONTACT
+                {t('CONTACT', 'CONTACTO')}
               </Link>
+
+              <LanguageSwitcher className="whitespace-nowrap text-sm font-semibold border-2 border-church-blue text-church-blue rounded-md px-3 py-1 hover:bg-church-blue hover:text-white transition-colors" />
             </nav>
 
             {/* Spacer for mobile to balance the hamburger button */}
-            <div className="md:hidden w-10"></div>
+            <div className="lg:hidden w-10"></div>
           </div>
         </div>
       </header>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white shadow-lg border-t">
+        <div className="lg:hidden bg-white shadow-lg border-t">
           <div className="container mx-auto px-4 py-4">
             <nav className="space-y-4">
-              <Link 
-                to="/" 
-                className="block text-gray-800 hover:text-church-blue font-semibold transition-colors py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                HOME
-              </Link>
-              
               <div className="space-y-2">
-                <div className="text-gray-800 font-semibold py-2">LEADERSHIP</div>
+                <div className="text-gray-800 font-semibold py-2">{t('LEADERSHIP', 'LIDERAZGO')}</div>
                 <div className="pl-4 space-y-2">
                   <Link 
                     to="/elders" 
                     className="block text-gray-600 hover:text-church-blue transition-colors py-1"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    SHEPHERDS
+                    {t('SHEPHERDS', 'ANCIANOS')}
                   </Link>
                   <Link 
                     to="/deacons" 
                     className="block text-gray-600 hover:text-church-blue transition-colors py-1"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    DEACONS
+                    {t('DEACONS', 'DIÁCONOS')}
                   </Link>
                   <Link 
                     to="/ministers" 
                     className="block text-gray-600 hover:text-church-blue transition-colors py-1"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    MINISTERS
+                    {t('MINISTERS', 'MINISTROS')}
                   </Link>
                   <Link 
                     to="/staff" 
                     className="block text-gray-600 hover:text-church-blue transition-colors py-1"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    STAFF
+                    {t('STAFF', 'EQUIPO')}
                   </Link>
                 </div>
               </div>
 
               <div className="space-y-2">
-                <div className="text-gray-800 font-semibold py-2">LIVESTREAM</div>
+                <div className="text-gray-800 font-semibold py-2">{t('LIVESTREAM', 'EN VIVO')}</div>
                 <div className="pl-4 space-y-2">
                   <Link
                     to="/livestreaming"
                     className="block text-gray-600 hover:text-church-blue transition-colors py-1"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    LIVE STREAM
+                    {t('LIVE STREAM', 'TRANSMISIÓN EN VIVO')}
                   </Link>
                   <Link
                     to="/sermonarchives"
                     className="block text-gray-600 hover:text-church-blue transition-colors py-1"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    SERMON ARCHIVES
+                    {t('SERMON ARCHIVES', 'ARCHIVO DE SERMONES')}
                   </Link>
                   <Link
                     to="/videobiblelessons"
                     className="block text-gray-600 hover:text-church-blue transition-colors py-1"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    VIDEO BIBLE LESSONS
+                    {t('VIDEO BIBLE LESSONS', 'LECCIONES BÍBLICAS EN VIDEO')}
                   </Link>
                 </div>
               </div>
               
               <div className="space-y-2">
-                <div className="text-gray-800 font-semibold py-2">MINISTRIES</div>
+                <div className="text-gray-800 font-semibold py-2">{t('MINISTRIES', 'MINISTERIOS')}</div>
                 <div className="pl-4 space-y-2">
                   <Link
                     to="/smallgroups"
                     className="block text-gray-600 hover:text-church-blue transition-colors py-1"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    SMALL GROUPS
+                    {t('SMALL GROUPS', 'GRUPOS PEQUEÑOS')}
                   </Link>
                   <Link
                     to="/missionaries"
                     className="block text-gray-600 hover:text-church-blue transition-colors py-1"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    MISSIONARIES
+                    {t('MISSIONARIES', 'MISIONEROS')}
                   </Link>
                   <Link
                     to="/summerlearningcamp"
                     className="block text-gray-600 hover:text-church-blue transition-colors py-1"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    SUMMER LEARNING CAMP
+                    {t('SUMMER LEARNING CAMP', 'CAMPAMENTO DE VERANO')}
                   </Link>
                   <Link
                     to="/sitb"
                     className="block text-gray-600 hover:text-church-blue transition-colors py-1"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    STUDIES IN THE BIBLE
+                    {t('STUDIES IN THE BIBLE', 'ESTUDIOS BÍBLICOS')}
                   </Link>
                   <Link
                     to="/ministries"
                     className="block text-gray-600 hover:text-church-blue transition-colors py-1"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    ALL MINISTRIES
+                    {t('ALL MINISTRIES', 'TODOS LOS MINISTERIOS')}
                   </Link>
                 </div>
               </div>
               
               <div className="space-y-2">
-                <div className="text-gray-800 font-semibold py-2">MEMBERS</div>
+                <div className="text-gray-800 font-semibold py-2">{t('MEMBERS', 'MIEMBROS')}</div>
                 <div className="pl-4 space-y-2">
                   <Link 
                     to="/calendar" 
                     className="block text-gray-600 hover:text-church-blue transition-colors py-1"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    CALENDAR
+                    {t('CALENDAR', 'CALENDARIO')}
                   </Link>
                   <Link 
                     to="/giving" 
                     className="block text-gray-600 hover:text-church-blue transition-colors py-1"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    GIVING
+                    {t('GIVING', 'OFRENDAS')}
                   </Link>
                   <a 
                     href="https://onrealm.org/WebbChapelChurch" 
@@ -331,7 +334,7 @@ function Header() {
                     className="block text-gray-600 hover:text-church-blue transition-colors py-1"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    REALM LOGIN
+                    {t('REALM LOGIN', 'ACCESO A REALM')}
                   </a>
                 </div>
               </div>
@@ -341,8 +344,13 @@ function Header() {
                 className="block text-gray-800 hover:text-church-blue font-semibold transition-colors py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                CONTACT
+                {t('CONTACT', 'CONTACTO')}
               </Link>
+
+              <LanguageSwitcher
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block text-center text-sm font-semibold border-2 border-church-blue text-church-blue rounded-md px-3 py-2 hover:bg-church-blue hover:text-white transition-colors"
+              />
             </nav>
           </div>
         </div>

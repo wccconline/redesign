@@ -1,7 +1,10 @@
-import { Link } from 'react-router-dom';
 import { Home, Phone, Mail } from 'lucide-react';
+import { Link } from './LocaleLink';
+import { useLang, useT } from '../utils/i18n';
 
 function Footer() {
+  const t = useT();
+  const lang = useLang();
   return (
     <>
       {/* Main Footer */}
@@ -10,49 +13,63 @@ function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Daily Encouragement */}
             <div>
-              <h3 className="text-xl font-bold mb-4">DAILY ENCOURAGEMENT</h3>
-              <div className="bg-white rounded-lg p-4">
-                <a 
-                  href="https://biblia.com/bible/kjv/verseoftheday" 
-                  target="_blank" 
+              <h3 className="text-xl font-bold mb-4">{t('DAILY ENCOURAGEMENT', 'ALIENTO DIARIO')}</h3>
+              {lang === 'es' ? (
+                <a
+                  href="https://www.bible.com/es/verse-of-the-day"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="block"
+                  className="block bg-white text-gray-800 rounded-lg p-4 hover:bg-gray-100 transition-colors"
                 >
-                  <img 
-                    src="https://biblia.com/api/plugins/verseoftheday/kjv?width=300&height=250&singleImage=true&theme=imagebased&variant=light" 
-                    alt="Daily Bible Verse" 
-                    className="w-full h-auto rounded"
-                  />
+                  <p className="font-bold">Versículo del día</p>
+                  <p className="text-sm text-gray-600">
+                    Lea el versículo de hoy en la aplicación de la Biblia (YouVersion).
+                  </p>
                 </a>
-              </div>
+              ) : (
+                <div className="bg-white rounded-lg p-4">
+                  <a 
+                    href="https://biblia.com/bible/kjv/verseoftheday" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block"
+                  >
+                    <img 
+                      src="https://biblia.com/api/plugins/verseoftheday/kjv?width=300&height=250&singleImage=true&theme=imagebased&variant=light" 
+                      alt="Daily Bible Verse" 
+                      className="w-full h-auto rounded"
+                    />
+                  </a>
+                </div>
+              )}
             </div>
 
             {/* When We Meet */}
             <div>
-              <h3 className="text-xl font-bold mb-4">WHEN WE MEET</h3>
+              <h3 className="text-xl font-bold mb-4">{t('WHEN WE MEET', 'CUÁNDO NOS REUNIMOS')}</h3>
               <div className="space-y-2">
                 <div>
-                  <strong className="underline">SUNDAY MORNING</strong><br />
-                  <span className="ml-4">9:30 am Worship</span><br />
-                  <span className="ml-4">11:00 am Classes for all ages</span>
+                  <strong className="underline">{t('SUNDAY MORNING', 'DOMINGO POR LA MAÑANA')}</strong><br />
+                  <span className="ml-4">{t('9:30 am Worship', '9:30 a.m. Adoración')}</span><br />
+                  <span className="ml-4">{t('11:00 am Classes for all ages', '11:00 a.m. Clases para todas las edades')}</span>
                 </div>
                 <br />
                 <div>
-                  <strong className="underline">SUNDAY EVENING</strong><br />
-                  <span className="ml-4">Small Group Meetings</span><br />
-                  <span className="ml-4">Contact church office</span>
+                  <strong className="underline">{t('SUNDAY EVENING', 'DOMINGO POR LA TARDE')}</strong><br />
+                  <span className="ml-4">{t('Small Group Meetings', 'Reuniones de Grupos Pequeños')}</span><br />
+                  <span className="ml-4">{t('Contact church office', 'Comuníquese con la oficina de la iglesia')}</span>
                 </div>
               </div>
             </div>
 
             {/* Where We Meet */}
             <div>
-              <h3 className="text-xl font-bold mb-4">WHERE WE MEET</h3>
+              <h3 className="text-xl font-bold mb-4">{t('WHERE WE MEET', 'DÓNDE NOS REUNIMOS')}</h3>
               <div className="space-y-3">
                 <div className="flex items-start">
                   <Home className="h-5 w-5 mt-1 mr-3 flex-shrink-0" />
                   <div>
-                    <p>Webb Chapel church of Christ</p>
+                    <p>{t('Webb Chapel church of Christ', 'Iglesia de Cristo Webb Chapel')}</p>
                     <p>13425 Webb Chapel Road,</p>
                     <p>Farmers Branch, Texas 75234</p>
                   </div>
@@ -67,7 +84,7 @@ function Footer() {
                     to="/contact" 
                     className="underline hover:text-gray-300 transition-colors"
                   >
-                    Email Us
+                    {t('Email Us', 'Envíenos un correo')}
                   </Link>
                 </div>
               </div>
@@ -81,10 +98,10 @@ function Footer() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
-              © Overseen by the Webb Chapel church of Christ Eldership
+              {t('© Overseen by the Webb Chapel church of Christ Eldership', '© Bajo la supervisión de los ancianos de la iglesia de Cristo de Webb Chapel')}
               <span className="mx-2">|</span>
               <Link to="/privacy" className="underline hover:text-gray-300 transition-colors">
-                Privacy Notice
+                {t('Privacy Notice', 'Aviso de Privacidad')}
               </Link>
             </div>
             <div className="flex space-x-4">

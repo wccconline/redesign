@@ -1,7 +1,11 @@
 import { useEffect } from 'react';
+import { useLang } from './i18n';
+import type { Lang } from './i18n';
 
-const SITE_NAME = 'Webb Chapel Church of Christ';
-const DEFAULT_TITLE = `${SITE_NAME} | Farmers Branch, Texas`;
+const SITE_NAME: Record<Lang, string> = {
+  en: 'Webb Chapel Church of Christ',
+  es: 'Iglesia de Cristo Webb Chapel',
+};
 
 export interface PageMeta {
   title: string;
@@ -25,20 +29,25 @@ export const takeServerMeta = (): PageMeta | null => {
 
 /**
  * Sets the browser tab title and meta description for the current page.
- * Call once at the top of every page component. Leave `title` undefined for
- * the home page, which uses the full site title.
+ * Call once at the top of every page component, passing the already-translated
+ * `title` and `description` (see useT). Leave `title` undefined for the home
+ * page, which uses the full site title.
  *
  * In the browser this updates the document as you navigate; in the build-time
  * prerender it records the values for the static HTML (see scripts/prerender.mjs).
  */
 export const usePageMeta = (title: string | undefined, description: string): void => {
-  const fullTitle = title ? `${title} | ${SITE_NAME}` : DEFAULT_TITLE;
+  const lang = useLang();
+  const fullTitle = title
+    ? `${title} | ${SITE_NAME[lang]}`
+    : `${SITE_NAME[lang]} | Farmers Branch, Texas`;
 
   if (import.meta.env.SSR) {
     recordServerMeta({ title: fullTitle, description });
   }
 
   useEffect(() => {
+    document.documentElement.lang = lang;
     document.title = fullTitle;
 
     let meta = document.querySelector<HTMLMetaElement>('meta[name="description"]');
@@ -48,5 +57,5 @@ export const usePageMeta = (title: string | undefined, description: string): voi
       document.head.appendChild(meta);
     }
     meta.content = description;
-  }, [fullTitle, description]);
+  }, [lang, fullTitle, description]);
 };

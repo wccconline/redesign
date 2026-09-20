@@ -6,17 +6,17 @@
 export const archives = [
   {
     year: 2026,
-    description: 'Recent sermons and teachings from 2026',
+    description: { en: 'Recent sermons and teachings from 2026', es: 'Sermones y enseñanzas recientes de 2026' },
     playlist: 'PLom-0r33d-gCrdM5y5EwTiTv-4oEMgui-',
   },
   {
     year: 2025,
-    description: 'Sermons and teachings from 2025',
+    description: { en: 'Sermons and teachings from 2025', es: 'Sermones y enseñanzas de 2025' },
     playlist: 'PLom-0r33d-gAOWuczIHZAvbC_9eImSocp',
   },
   {
     year: 2024,
-    description: 'Sermons and teachings from 2024',
+    description: { en: 'Sermons and teachings from 2024', es: 'Sermones y enseñanzas de 2024' },
     playlist: 'PLom-0r33d-gCan9qQJRoJMLTce2Nq0u4L',
   },
 ];

@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { useLang, useT } from '../utils/i18n';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
 const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_ID as string;
 
 const ContactForm: React.FC = () => {
+  const t = useT();
+  const lang = useLang();
   const [status, setStatus] = useState<Status>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
@@ -23,7 +26,8 @@ const ContactForm: React.FC = () => {
       const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(form),
+        // `language` tells staff which language to reply in.
+        body: JSON.stringify({ ...form, language: lang }),
       });
 
       if (res.ok) {
@@ -31,11 +35,11 @@ const ContactForm: React.FC = () => {
         setForm({ name: '', email: '', subject: '', message: '' });
       } else {
         const data = await res.json();
-        setErrorMessage(data?.errors?.[0]?.message ?? 'Something went wrong. Please try again.');
+        setErrorMessage(data?.errors?.[0]?.message ?? t('Something went wrong. Please try again.', 'Algo salió mal. Por favor, inténtelo de nuevo.'));
         setStatus('error');
       }
     } catch {
-      setErrorMessage('Unable to send message. Please check your connection and try again.');
+      setErrorMessage(t('Unable to send message. Please check your connection and try again.', 'No se pudo enviar el mensaje. Verifique su conexión e inténtelo de nuevo.'));
       setStatus('error');
     }
   };
@@ -44,13 +48,13 @@ const ContactForm: React.FC = () => {
     return (
       <div className="flex flex-col items-center justify-center py-12 text-center">
         <CheckCircle className="w-16 h-16 text-green-500 mb-4" />
-        <h3 className="text-2xl font-bold text-gray-800 mb-2">Message Sent!</h3>
-        <p className="text-gray-600 mb-6">Thank you for reaching out. We'll get back to you soon.</p>
+        <h3 className="text-2xl font-bold text-gray-800 mb-2">{t('Message Sent!', '¡Mensaje Enviado!')}</h3>
+        <p className="text-gray-600 mb-6">{t("Thank you for reaching out. We'll get back to you soon.", 'Gracias por comunicarse con nosotros. Le responderemos pronto.')}</p>
         <button
           onClick={() => setStatus('idle')}
           className="bg-church-blue text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors"
         >
-          Send Another Message
+          {t('Send Another Message', 'Enviar Otro Mensaje')}
         </button>
       </div>
     );
@@ -61,7 +65,7 @@ const ContactForm: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
           <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-1">
-            Name <span className="text-red-500">*</span>
+            {t('Name', 'Nombre')} <span className="text-red-500">*</span>
           </label>
           <input
             id="name"
@@ -71,12 +75,12 @@ const ContactForm: React.FC = () => {
             value={form.name}
             onChange={handleChange}
             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-church-blue"
-            placeholder="Your name"
+            placeholder={t('Your name', 'Su nombre')}
           />
         </div>
         <div>
           <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-1">
-            Email <span className="text-red-500">*</span>
+            {t('Email', 'Correo electrónico')} <span className="text-red-500">*</span>
           </label>
           <input
             id="email"
@@ -86,14 +90,14 @@ const ContactForm: React.FC = () => {
             value={form.email}
             onChange={handleChange}
             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-church-blue"
-            placeholder="your@email.com"
+            placeholder={t('your@email.com', 'su@correo.com')}
           />
         </div>
       </div>
 
       <div>
         <label htmlFor="subject" className="block text-sm font-semibold text-gray-700 mb-1">
-          Subject
+          {t('Subject', 'Asunto')}
         </label>
         <input
           id="subject"
@@ -102,13 +106,13 @@ const ContactForm: React.FC = () => {
           value={form.subject}
           onChange={handleChange}
           className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-church-blue"
-          placeholder="What is this regarding?"
+          placeholder={t('What is this regarding?', '¿De qué se trata?')}
         />
       </div>
 
       <div>
         <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-1">
-          Message <span className="text-red-500">*</span>
+          {t('Message', 'Mensaje')} <span className="text-red-500">*</span>
         </label>
         <textarea
           id="message"
@@ -118,7 +122,7 @@ const ContactForm: React.FC = () => {
           value={form.message}
           onChange={handleChange}
           className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-church-blue resize-none"
-          placeholder="How can we help you?"
+          placeholder={t('How can we help you?', '¿Cómo podemos ayudarle?')}
         />
       </div>
 
@@ -135,7 +139,7 @@ const ContactForm: React.FC = () => {
         className="w-full bg-church-blue text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
       >
         <Send className="w-4 h-4" />
-        {status === 'submitting' ? 'Sending…' : 'Send Message'}
+        {status === 'submitting' ? t('Sending…', 'Enviando…') : t('Send Message', 'Enviar Mensaje')}
       </button>
     </form>
   );

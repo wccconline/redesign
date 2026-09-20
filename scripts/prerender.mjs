@@ -14,7 +14,7 @@ const root = resolve(import.meta.dirname, '..');
 const distDir = join(root, 'dist');
 const serverEntry = join(root, 'dist-server', 'entry-server.js');
 
-const { render, paths, siteUrl, basePath } = await import(pathToFileURL(serverEntry).href);
+const { render, paths, langs, pathFor, siteUrl, basePath } = await import(pathToFileURL(serverEntry).href);
 const template = await readFile(join(distDir, 'index.html'), 'utf8');
 
 const escapeHtml = (s) =>
@@ -29,31 +29,66 @@ function replaceOnce(html, pattern, replacement, label) {
   return html.replace(pattern, () => replacement);
 }
 
-const publicUrl = (routePath) => (routePath === '/' ? `${siteUrl}/` : `${siteUrl}${routePath}/`);
+/** Public URL of a page in a language, always with a trailing slash. */
+const publicUrl = (routePath, lang = 'en') => {
+  const full = pathFor(routePath, lang);
+  return full === '/' ? `${siteUrl}/` : `${siteUrl}${full}/`;
+};
+
+// Things in index.html that are English text and need a Spanish version on Spanish pages.
+const spanish = {
+  siteName: 'Iglesia de Cristo Webb Chapel',
+  imageAlt: 'Iglesia de Cristo Webb Chapel - Una iglesia en la comunidad',
+  ldDescription:
+    'Iglesia de Cristo Webb Chapel en Farmers Branch, Texas. Acompáñenos los domingos a las 9:30 a.m. para la adoración y el estudio bíblico, o vea nuestra transmisión en vivo.',
+  locale: 'es_US',
+};
 
 let rendered = 0;
-for (const routePath of paths) {
-  const { html, meta } = render(routePath);
-  if (!meta) throw new Error(`prerender: ${routePath} did not call usePageMeta()`);
-  if (!html) throw new Error(`prerender: ${routePath} rendered no HTML`);
+for (const lang of langs) {
+  for (const routePath of paths) {
+    const { html, meta } = render(routePath, lang);
+    if (!meta) throw new Error(`prerender: ${lang} ${routePath} did not call usePageMeta()`);
+    if (!html) throw new Error(`prerender: ${lang} ${routePath} rendered no HTML`);
 
-  const url = publicUrl(routePath);
-  const title = escapeHtml(meta.title);
-  const description = escapeHtml(meta.description);
+    const url = publicUrl(routePath, lang);
+    const title = escapeHtml(meta.title);
+    const description = escapeHtml(meta.description);
+    const alternates = langs
+      .map((l) => `<link rel="alternate" hreflang="${l}" href="${publicUrl(routePath, l)}" />`)
+      .concat(`<link rel="alternate" hreflang="x-default" href="${publicUrl(routePath, 'en')}" />`)
+      .join('\n    ');
+    const es = lang === 'es';
 
-  let page = template;
-  page = replaceOnce(page, /<div id="root"><\/div>/, `<div id="root">${html}</div>`, 'empty #root');
-  page = replaceOnce(page, /<title>[^<]*<\/title>/, `<title>${title}</title>`, '<title>');
-  page = replaceOnce(page, /<meta name="description" content="[^"]*" \/>/, `<meta name="description" content="${description}" />`, 'meta description');
-  page = replaceOnce(page, /<link rel="canonical" href="[^"]*" \/>/, `<link rel="canonical" href="${url}" />`, 'canonical link');
-  page = replaceOnce(page, /<meta property="og:url" content="[^"]*" \/>/, `<meta property="og:url" content="${url}" />`, 'og:url');
-  page = replaceOnce(page, /<meta property="og:title" content="[^"]*" \/>/, `<meta property="og:title" content="${title}" />`, 'og:title');
-  page = replaceOnce(page, /<meta property="og:description" content="[^"]*" \/>/, `<meta property="og:description" content="${description}" />`, 'og:description');
+    let page = template;
+    page = replaceOnce(page, /<html lang="en">/, `<html lang="${lang}">`, '<html lang>');
+    page = replaceOnce(page, /<div id="root"><\/div>/, `<div id="root">${html}</div>`, 'empty #root');
+    page = replaceOnce(page, /<title>[^<]*<\/title>/, `<title>${title}</title>`, '<title>');
+    page = replaceOnce(page, /<meta name="description" content="[^"]*" \/>/, `<meta name="description" content="${description}" />`, 'meta description');
+    page = replaceOnce(page, /<link rel="canonical" href="[^"]*" \/>/, `<link rel="canonical" href="${url}" />\n    ${alternates}`, 'canonical link');
+    page = replaceOnce(page, /<meta property="og:url" content="[^"]*" \/>/, `<meta property="og:url" content="${url}" />`, 'og:url');
+    page = replaceOnce(page, /<meta property="og:title" content="[^"]*" \/>/, `<meta property="og:title" content="${title}" />`, 'og:title');
+    page = replaceOnce(page, /<meta property="og:description" content="[^"]*" \/>/, `<meta property="og:description" content="${description}" />`, 'og:description');
+    page = replaceOnce(
+      page,
+      /<meta property="og:locale" content="[^"]*" \/>/,
+      es
+        ? `<meta property="og:locale" content="es_US" />\n    <meta property="og:locale:alternate" content="en_US" />`
+        : `<meta property="og:locale" content="en_US" />\n    <meta property="og:locale:alternate" content="es_US" />`,
+      'og:locale',
+    );
+    if (es) {
+      page = replaceOnce(page, /<meta property="og:site_name" content="[^"]*" \/>/, `<meta property="og:site_name" content="${spanish.siteName}" />`, 'og:site_name');
+      page = replaceOnce(page, /<meta property="og:image:alt" content="[^"]*" \/>/, `<meta property="og:image:alt" content="${escapeHtml(spanish.imageAlt)}" />`, 'og:image:alt');
+      page = replaceOnce(page, /"description": "[^"]*"/, `"description": ${JSON.stringify(spanish.ldDescription)}`, 'JSON-LD description');
+    }
 
-  const file = routePath === '/' ? join(distDir, 'index.html') : join(distDir, routePath.slice(1), 'index.html');
-  await mkdir(dirname(file), { recursive: true });
-  await writeFile(file, page);
-  rendered++;
+    const full = pathFor(routePath, lang);
+    const file = full === '/' ? join(distDir, 'index.html') : join(distDir, full.slice(1), 'index.html');
+    await mkdir(dirname(file), { recursive: true });
+    await writeFile(file, page);
+    rendered++;
+  }
 }
 
 // 404.html: an empty client-rendered shell (so the browser renders the "not found"
@@ -93,12 +128,21 @@ for (const [oldFile, newPath] of Object.entries(legacy)) {
   await writeFile(join(distDir, oldFile), stub);
 }
 
-// sitemap.xml
+// sitemap.xml: every page in every language, each listing its language alternates
+const sitemapEntries = [];
+for (const lang of langs) {
+  for (const p of paths) {
+    const alts = [...langs.map((l) => [l, publicUrl(p, l)]), ['x-default', publicUrl(p, 'en')]]
+      .map(([l, href]) => `    <xhtml:link rel="alternate" hreflang="${l}" href="${href}"/>`)
+      .join('\n');
+    sitemapEntries.push(`  <url>\n    <loc>${publicUrl(p, lang)}</loc>\n${alts}\n  </url>`);
+  }
+}
 const sitemap =
   '<?xml version="1.0" encoding="UTF-8"?>\n' +
-  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-  paths.map((p) => `  <url><loc>${publicUrl(p)}</loc></url>`).join('\n') +
+  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' +
+  sitemapEntries.join('\n') +
   '\n</urlset>\n';
 await writeFile(join(distDir, 'sitemap.xml'), sitemap);
 
-console.log(`prerender: wrote ${rendered} pages and ${Object.keys(legacy).length} legacy redirects (base ${basePath}, site ${siteUrl}), 404.html and sitemap.xml`);
+console.log(`prerender: wrote ${rendered} pages (${langs.join('+')}) and ${Object.keys(legacy).length} legacy redirects (base ${basePath}, site ${siteUrl}), 404.html and sitemap.xml`);

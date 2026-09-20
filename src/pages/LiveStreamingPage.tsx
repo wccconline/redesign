@@ -1,11 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from '../components/LocaleLink';
 import { Play, Archive, Calendar, Clock } from 'lucide-react';
 import { archiveYearRange } from '../utils/sermonArchives';
+import { useT } from '../utils/i18n';
 import { usePageMeta } from '../utils/usePageMeta';
 
 const LiveStreamingPage: React.FC = () => {
-  usePageMeta('Live Stream Sunday Worship', 'Watch Sunday worship from Webb Chapel church of Christ live on YouTube, every Sunday at 9:30 AM. No registration required.');
+  const t = useT();
+  usePageMeta(
+    t('Live Stream Sunday Worship', 'Transmisión en Vivo de la Adoración del Domingo'),
+    t(
+      'Watch Sunday worship from Webb Chapel church of Christ live on YouTube, every Sunday at 9:30 AM. No registration required.',
+      'Vea en vivo por YouTube la adoración del domingo de la iglesia de Cristo de Webb Chapel, todos los domingos a las 9:30 a.m. No se requiere registro.',
+    ),
+  );
   return (
     <div className="w-full">
       {/* Hero Section */}
@@ -13,10 +21,10 @@ const LiveStreamingPage: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-              Live Streaming Sunday Worship
+              {t('Live Streaming Sunday Worship', 'Transmisión en Vivo de la Adoración del Domingo')}
             </h1>
             <p className="text-xl md:text-2xl text-gray-600">
-              Join us for worship from anywhere
+              {t('Join us for worship from anywhere', 'Acompáñenos en la adoración desde cualquier lugar')}
             </p>
           </div>
         </div>
@@ -28,7 +36,7 @@ const LiveStreamingPage: React.FC = () => {
           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
             <div className="p-6">
               <h2 className="text-2xl font-bold text-gray-800 mb-4">
-                Sunday Worship Service
+                {t('Sunday Worship Service', 'Servicio de Adoración del Domingo')}
               </h2>
               
               {/* Live Stream Embed */}
@@ -38,7 +46,7 @@ const LiveStreamingPage: React.FC = () => {
                   className="absolute top-0 left-0 w-full h-full rounded-lg"
                   frameBorder="0"
                   allowFullScreen
-                  title="Webb Chapel Livestream"
+                  title={t('Webb Chapel Livestream', 'Transmisión en vivo de Webb Chapel')}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 />
               </div>
@@ -46,11 +54,11 @@ const LiveStreamingPage: React.FC = () => {
               <div className="mt-6 flex flex-wrap gap-4 text-sm text-gray-600">
                 <div className="flex items-center">
                   <Clock className="w-4 h-4 mr-2" />
-                  Sundays at 9:30 AM
+                  {t('Sundays at 9:30 AM', 'Domingos a las 9:30 a.m.')}
                 </div>
                 <div className="flex items-center">
                   <Calendar className="w-4 h-4 mr-2" />
-                  Weekly Service
+                  {t('Weekly Service', 'Servicio semanal')}
                 </div>
               </div>
             </div>
@@ -65,12 +73,12 @@ const LiveStreamingPage: React.FC = () => {
           <div className="flex items-center">
             <Archive className="w-6 h-6 mr-3 text-church-blue" />
             <div>
-              <h2 className="text-xl font-bold text-gray-800">Sermon Archives</h2>
-              <p className="text-gray-600 text-sm mt-1">Browse past sermons from {archiveYearRange()}</p>
+              <h2 className="text-xl font-bold text-gray-800">{t('Sermon Archives', 'Archivo de Sermones')}</h2>
+              <p className="text-gray-600 text-sm mt-1">{t('Browse past sermons from', 'Explore sermones anteriores de')} {archiveYearRange()}</p>
             </div>
           </div>
           <span className="bg-church-blue text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
-            View Archives
+            {t('View Archives', 'Ver Archivo')}
           </span>
         </Link>
 
@@ -78,36 +86,36 @@ const LiveStreamingPage: React.FC = () => {
         <div className="mt-12 grid md:grid-cols-2 gap-8">
           <div className="bg-white rounded-lg shadow-lg p-6">
             <h3 className="text-xl font-bold text-gray-800 mb-4">
-              How to Watch
+              {t('How to Watch', 'Cómo Ver la Transmisión')}
             </h3>
             <ul className="space-y-3 text-gray-600">
               <li className="flex items-start">
                 <Play className="w-5 h-5 mr-2 mt-0.5 text-church-blue" />
-                <span>Click play on the live stream above</span>
+                <span>{t('Click play on the live stream above', 'Haga clic en reproducir en la transmisión en vivo de arriba')}</span>
               </li>
               <li className="flex items-start">
                 <Play className="w-5 h-5 mr-2 mt-0.5 text-church-blue" />
-                <span>Stream works on all devices</span>
+                <span>{t('Stream works on all devices', 'La transmisión funciona en todos los dispositivos')}</span>
               </li>
               <li className="flex items-start">
                 <Play className="w-5 h-5 mr-2 mt-0.5 text-church-blue" />
-                <span>No registration required</span>
+                <span>{t('No registration required', 'No se requiere registro')}</span>
               </li>
             </ul>
           </div>
 
           <div className="bg-white rounded-lg shadow-lg p-6">
             <h3 className="text-xl font-bold text-gray-800 mb-4">
-              Service Times
+              {t('Service Times', 'Horarios de Servicio')}
             </h3>
             <div className="space-y-3">
               <div className="flex justify-between items-center py-2 border-b border-gray-100">
-                <span className="font-medium">Sunday Worship</span>
-                <span className="text-church-blue font-semibold">9:30 AM</span>
+                <span className="font-medium">{t('Sunday Worship', 'Adoración del Domingo')}</span>
+                <span className="text-church-blue font-semibold">{t('9:30 AM', '9:30 a.m.')}</span>
               </div>
               <div className="flex justify-between items-center py-2 border-b border-gray-100">
-                <span className="font-medium">Sunday Bible Study</span>
-                <span className="text-church-blue font-semibold">11:00 AM</span>
+                <span className="font-medium">{t('Sunday Bible Study', 'Estudio Bíblico del Domingo')}</span>
+                <span className="text-church-blue font-semibold">{t('11:00 AM', '11:00 a.m.')}</span>
               </div>
               
             </div>
