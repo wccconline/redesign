@@ -82,6 +82,10 @@ function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
               © Overseen by the Webb Chapel church of Christ Eldership
+              <span className="mx-2">|</span>
+              <Link to="/privacy" className="underline hover:text-gray-300 transition-colors">
+                Privacy Notice
+              </Link>
             </div>
             <div className="flex space-x-4">
               <a

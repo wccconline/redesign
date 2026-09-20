@@ -131,7 +131,7 @@ VITE_APP_URL=http://localhost:5173
 
 ### Recommended Tools
 
-1. **Google Analytics** - Add tracking code to index.html
+1. **Google Analytics** - Set the `VITE_GA_MEASUREMENT_ID` repo secret (see `src/utils/analytics.ts`); no tracking code needs to be added to index.html
 2. **Google Search Console** - Submit sitemap
 3. **PageSpeed Insights** - Monitor performance
 4. **Uptime monitoring** - Set up alerts
@@ -143,7 +143,7 @@ VITE_APP_URL=http://localhost:5173
 Add CSP headers to prevent XSS attacks:
 
 ```html
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.cognitoforms.com https://www.christianworldmedia.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.cognitoforms.com https://www.christianworldmedia.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com;">
 ```
 
 ### HTTPS

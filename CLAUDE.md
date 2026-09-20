@@ -48,6 +48,7 @@ Custom global CSS classes (e.g. `.church-blue-background`, `.header-background`)
 **Third-party integrations:**
 - `ContactForm.tsx` — the contact page form; posts to Formspree using the `VITE_FORMSPREE_ID` environment variable. In deployed builds this comes from the `VITE_FORMSPREE_ID` GitHub Actions repo secret (see `.github/workflows/deploy.yml`); for local dev put it in `.env.local`.
 - `CognitoForm.tsx` — injects a Cognito Forms form via the `seamless.js` script tag (currently used on the SITB page)
+- `src/utils/analytics.ts` — Google Analytics 4, initialised from `main.tsx`. Loads only in production builds that have `VITE_GA_MEASUREMENT_ID` set (a GitHub Actions repo secret, wired in `deploy.yml`). Do not put the ID in `.env.local`, or local builds/previews will send data. Page views for in-app navigation come from GA's built-in enhanced measurement ("Page changes based on browser history events"), so keep that toggle on in the GA data stream and don't add manual `page_view` events.
 - `Footer.tsx` — embeds a Biblia.com daily Bible verse image widget
 - Pages embed YouTube iframes (livestream/sermon archives), Vimeo iframes (video Bible lessons), a Google Calendar iframe (calendar page, `wccconline@webbchapel.org`), and a Google Maps iframe (contact page)
 

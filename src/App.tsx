@@ -17,6 +17,7 @@ import DeaconsPage from './pages/DeaconsPage';
 import MinistersPage from './pages/MinistersPage';
 import StaffPage from './pages/StaffPage';
 import CalendarPage from './pages/CalendarPage';
+import PrivacyPage from './pages/PrivacyPage';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           <Route path="/ministers" element={<MinistersPage />} />
           <Route path="/staff" element={<StaffPage />} />
           <Route path="/calendar" element={<CalendarPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
           {/* Add more routes as we create more pages */}
         </Routes>
       </Layout>
