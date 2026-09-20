@@ -65,6 +65,34 @@ notFound = replaceOnce(notFound, /<title>[^<]*<\/title>/, '<title>Page Not Found
 notFound = replaceOnce(notFound, /<meta name="description" content="/, '<meta name="robots" content="noindex" />\n    <meta name="description" content="', 'meta description');
 await writeFile(join(distDir, '404.html'), notFound);
 
+// Redirect stubs for the old site's .html URLs (scripts/legacy-redirects.json), so
+// links and search results pointing at e.g. /elders.html land on the new page.
+// Static hosts like GitHub Pages can't send real 301s, so each stub combines a
+// canonical link (tells search engines the new URL is the real one) with an instant
+// meta refresh and a script that also keeps any ?query or #hash.
+const legacy = JSON.parse(await readFile(join(root, 'scripts', 'legacy-redirects.json'), 'utf8'));
+for (const [oldFile, newPath] of Object.entries(legacy)) {
+  if (!paths.includes(newPath)) {
+    throw new Error(`prerender: legacy-redirects.json sends ${oldFile} to ${newPath}, which is not a route`);
+  }
+  const target = publicUrl(newPath);
+  const stub = `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting… | Webb Chapel Church of Christ</title>
+    <link rel="canonical" href="${target}" />
+    <meta http-equiv="refresh" content="0; url=${target}" />
+    <script>location.replace(${JSON.stringify(target)} + location.search + location.hash);</script>
+  </head>
+  <body>
+    <p>This page has moved to <a href="${target}">${target}</a>.</p>
+  </body>
+</html>
+`;
+  await writeFile(join(distDir, oldFile), stub);
+}
+
 // sitemap.xml
 const sitemap =
   '<?xml version="1.0" encoding="UTF-8"?>\n' +
@@ -73,4 +101,4 @@ const sitemap =
   '\n</urlset>\n';
 await writeFile(join(distDir, 'sitemap.xml'), sitemap);
 
-console.log(`prerender: wrote ${rendered} pages (base ${basePath}, site ${siteUrl}), 404.html and sitemap.xml`);
+console.log(`prerender: wrote ${rendered} pages and ${Object.keys(legacy).length} legacy redirects (base ${basePath}, site ${siteUrl}), 404.html and sitemap.xml`);
