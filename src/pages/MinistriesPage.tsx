@@ -73,6 +73,8 @@ const MinistriesPage: React.FC = () => {
               <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
                 <button
                   onClick={() => toggleItem(index)}
+                  aria-expanded={expandedItems.includes(index)}
+                  aria-controls={`ministry-panel-${index}`}
                   className="w-full px-6 py-4 text-left bg-church-blue text-white hover:bg-blue-800 transition-colors flex items-center justify-between"
                 >
                   <h3 className="text-lg font-semibold">{ministry.title}</h3>
@@ -83,34 +85,38 @@ const MinistriesPage: React.FC = () => {
                   )}
                 </button>
                 
-                {expandedItems.includes(index) && (
-                  <div className="p-6 bg-gray-50">
-                    <div className="prose prose-lg max-w-none">
-                      <p className="text-gray-700 mb-4">{ministry.content}</p>
-                      
-                      {ministry.link && (
-                        <div className="mb-4">
-                          <a 
-                            href={ministry.link}
-                            className="inline-block bg-church-blue text-white px-4 py-2 rounded hover:bg-blue-800 transition-colors font-semibold"
-                          >
-                            Click here to enroll
-                          </a>
-                        </div>
-                      )}
-                      
-                      {ministry.image && (
-                        <div className="mt-4">
-                          <img 
-                            src={ministry.image} 
-                            alt={ministry.title}
-                            className="max-w-xs h-auto rounded shadow-sm"
-                          />
-                        </div>
-                      )}
-                    </div>
+                {/* Always in the page (so search engines can read it); hidden until expanded. */}
+                <div
+                  id={`ministry-panel-${index}`}
+                  hidden={!expandedItems.includes(index)}
+                  className="p-6 bg-gray-50"
+                >
+                  <div className="prose prose-lg max-w-none">
+                    <p className="text-gray-700 mb-4">{ministry.content}</p>
+
+                    {ministry.link && (
+                      <div className="mb-4">
+                        <a
+                          href={ministry.link}
+                          className="inline-block bg-church-blue text-white px-4 py-2 rounded hover:bg-blue-800 transition-colors font-semibold"
+                        >
+                          Click here to enroll
+                        </a>
+                      </div>
+                    )}
+
+                    {ministry.image && (
+                      <div className="mt-4">
+                        <img
+                          src={ministry.image}
+                          alt={ministry.title}
+                          loading="lazy"
+                          className="max-w-xs h-auto rounded shadow-sm"
+                        />
+                      </div>
+                    )}
                   </div>
-                )}
+                </div>
               </div>
             ))}
           </div>
