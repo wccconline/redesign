@@ -1,23 +1,18 @@
 import { Link } from 'react-router-dom';
 import { ChevronDown, Menu, X } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { getImagePath } from '../utils/assets';
 
 function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
-  // Set background image dynamically
-  useEffect(() => {
-    const header = document.querySelector('.header-background') as HTMLElement;
-    if (header) {
-      header.style.backgroundImage = `url(${getImagePath('headerbg.jpg')})`;
-    }
-  }, []);
-
   return (
     <>
       {/* Main Header */}
-      <header className="bg-white shadow-md h-32 flex items-center header-background">
+      <header
+        className="bg-white shadow-md h-32 flex items-center header-background"
+        style={{ backgroundImage: `url(${getImagePath('headerbg.jpg')})` }}
+      >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
             {/* Mobile Menu Button - Left side */}
