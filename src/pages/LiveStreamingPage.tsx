@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Play, Archive, Calendar, Clock } from 'lucide-react';
+import { archiveYearRange } from '../utils/sermonArchives';
 
 const LiveStreamingPage: React.FC = () => {
   return (
@@ -23,11 +24,6 @@ const LiveStreamingPage: React.FC = () => {
         {/* Live Stream Section */}
         <div className="mb-12">
           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <div className="bg-red-600 text-white px-6 py-3 flex items-center">
-              <div className="w-3 h-3 bg-white rounded-full mr-3 animate-pulse"></div>
-              <span className="font-semibold">LIVE NOW</span>
-            </div>
-            
             <div className="p-6">
               <h2 className="text-2xl font-bold text-gray-800 mb-4">
                 Sunday Worship Service
@@ -68,7 +64,7 @@ const LiveStreamingPage: React.FC = () => {
             <Archive className="w-6 h-6 mr-3 text-church-blue" />
             <div>
               <h2 className="text-xl font-bold text-gray-800">Sermon Archives</h2>
-              <p className="text-gray-600 text-sm mt-1">Browse past sermons from 2024–2026</p>
+              <p className="text-gray-600 text-sm mt-1">Browse past sermons from {archiveYearRange()}</p>
             </div>
           </div>
           <span className="bg-church-blue text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
