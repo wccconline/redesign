@@ -11,9 +11,6 @@ const CALENDAR_URL =
 const CALENDAR_FULL_URL =
   'https://calendar.google.com/calendar/embed?src=c_476164e48f61c5bd5831186589e7aeb2679c50bf16114ff1618981b5a9499390%40group.calendar.google.com&ctz=America%2FChicago';
 
-// Where church leaders sign in to add or change events.
-const CALENDAR_ADMIN_URL = 'https://calendar.google.com/calendar/';
-
 const CalendarPage: React.FC = () => {
   const t = useT();
   usePageMeta(
@@ -187,27 +184,6 @@ const CalendarPage: React.FC = () => {
                 {t('Bible studies, seminars, and educational workshops for all ages', 'Estudios bíblicos, seminarios y talleres educativos para todas las edades')}
               </p>
             </div>
-          </div>
-        </div>
-
-        {/* Calendar Admin */}
-        <div className="bg-white rounded-lg shadow-lg p-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-            {t('Calendar Administration', 'Administración del Calendario')}
-          </h2>
-          <div className="text-center">
-            <p className="text-gray-600 mb-6">
-              {t('For church leaders and staff who need to add or modify events on the calendar.', 'Para los líderes y el personal de la iglesia que necesitan agregar o modificar eventos en el calendario.')}
-            </p>
-            <a 
-              href={CALENDAR_ADMIN_URL}
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center bg-gray-200 text-gray-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
-            >
-              <ExternalLink className="w-4 h-4 mr-2" />
-              {t('Calendar Admin Login', 'Acceso de Administrador del Calendario')}
-            </a>
           </div>
         </div>
       </div>

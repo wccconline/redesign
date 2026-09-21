@@ -16,12 +16,12 @@ function StaffPage() {
       name: "Crissy Ketchersid",
       title: {
         en: "Financial Secretary",
-        es: "Secretaría Financiera",
+        es: "Secretaria Financiera",
       },
-      image: getImagePath('leadership/placeholder.svg'),
+      image: getImagePath('leadership/staff/staff-crissyketchersid.jpg'),
       bio: {
-        en: "Crissy handles the financial operations and administrative tasks for our church. She ensures that all financial matters are handled with integrity and transparency.",
-        es: "Crissy se encarga de las operaciones financieras y de las tareas administrativas de nuestra iglesia. Se asegura de que todos los asuntos financieros se manejen con integridad y transparencia.",
+        en: "Crissy came to Webb Chapel in 2008. She volunteered for several years in different roles including coordinator for the food assistance room and leadership training for Christ (LTC). In 2023, she began working in the church office as the financial secretary.",
+        es: "Crissy llegó a Webb Chapel en 2008. Durante varios años fue voluntaria en diferentes funciones, incluyendo coordinadora de la sala de asistencia alimentaria y del Entrenamiento de Liderazgo para Cristo (LTC). En 2023 comenzó a trabajar en la oficina de la iglesia como secretaria financiera.",
       },
       responsibilities: [
         { en: "Financial record keeping", es: "Registro de la contabilidad" },
