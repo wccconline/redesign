@@ -4,7 +4,15 @@ import { useT } from '../utils/i18n';
 import { usePageMeta } from '../utils/usePageMeta';
 
 const CALENDAR_URL =
-  'https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FChicago&showPrint=0&src=d2NjY29ubGluZUB3ZWJiY2hhcGVsLm9yZw&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23039be5&color=%230b8043';
+  'https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FChicago&showPrint=0&src=Y180NzYxNjRlNDhmNjFjNWJkNTgzMTE4NjU4OWU3YWViMjY3OWM1MGJmMTYxMTRmZjE2MTg5ODFiNWE5NDk5MzkwQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23039be5&color=%230b8043';
+
+// Full-page public view of the church events calendar ("Webb Chapel Events", a secondary calendar
+// owned by wccconline@webbchapel.org). Visitors can only see it while it is shared publicly.
+const CALENDAR_FULL_URL =
+  'https://calendar.google.com/calendar/embed?src=c_476164e48f61c5bd5831186589e7aeb2679c50bf16114ff1618981b5a9499390%40group.calendar.google.com&ctz=America%2FChicago';
+
+// Where church leaders sign in to add or change events.
+const CALENDAR_ADMIN_URL = 'https://calendar.google.com/calendar/';
 
 const CalendarPage: React.FC = () => {
   const t = useT();
@@ -19,7 +27,7 @@ const CalendarPage: React.FC = () => {
     {
       title: { en: "Sunday Worship Service", es: "Servicio de Adoración del Domingo" },
       date: { en: "Every Sunday", es: "Todos los domingos" },
-      time: { en: "10:30 AM", es: "10:30 a.m." },
+      time: { en: "9:30 AM", es: "9:30 a.m." },
       location: { en: "Main Sanctuary", es: "Santuario Principal" },
       description: {
         en: "Join us for our weekly worship service with preaching, singing, and fellowship.",
@@ -29,7 +37,7 @@ const CalendarPage: React.FC = () => {
     {
       title: { en: "Bible Study", es: "Estudio Bíblico" },
       date: { en: "Every Sunday", es: "Todos los domingos" },
-      time: { en: "9:30 AM", es: "9:30 a.m." },
+      time: { en: "11:00 AM", es: "11:00 a.m." },
       location: { en: "Various Rooms", es: "Varios salones" },
       description: {
         en: "Adult Bible study classes for all ages and levels.",
@@ -91,7 +99,7 @@ const CalendarPage: React.FC = () => {
               {/* View Full Calendar Link */}
               <div className="mt-6 text-center">
                 <a
-                  href="https://www.webbchapel.org/calendar32/"
+                  href={t(CALENDAR_FULL_URL, `${CALENDAR_FULL_URL}&hl=es`)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center bg-church-blue text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
@@ -192,7 +200,7 @@ const CalendarPage: React.FC = () => {
               {t('For church leaders and staff who need to add or modify events on the calendar.', 'Para los líderes y el personal de la iglesia que necesitan agregar o modificar eventos en el calendario.')}
             </p>
             <a 
-              href="https://www.webbchapel.org/calendar32/" 
+              href={CALENDAR_ADMIN_URL}
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex items-center bg-gray-200 text-gray-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
