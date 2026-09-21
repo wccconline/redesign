@@ -58,7 +58,7 @@ const DeaconsPage: React.FC = () => {
       name: "John Gattis",
       image: getImagePath('leadership/deacons/deaconJohnGattis.jpg'),
       bio: {
-        en: "John and his wife Crystal were married in 1995, placed membership membership at Webb Chapel in 1994, and John became a deacon in 2011, helping with ESL. Crystal helps with children's Bible classes. They are the parents of their son, Zachary Weisbard.",
+        en: "John and his wife Crystal were married in 1995, placed membership at Webb Chapel in 1994, and John became a deacon in 2011, helping with ESL. Crystal helps with children's Bible classes. They are the parents of their son, Zachary Weisbard.",
         es: "John y su esposa Crystal se casaron en 1995, se hicieron miembros de Webb Chapel en 1994, y John fue nombrado diácono en 2011, colaborando con las clases de inglés como segundo idioma (ESL). Crystal ayuda con las clases bíblicas de los niños. Son los padres de su hijo, Zachary Weisbard.",
       }
     },

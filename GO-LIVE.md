@@ -18,10 +18,13 @@ The redesigned site is built from this repo and published in two places:
 
 ## Launch checklist
 
-Before launch:
-- [ ] Decide what replaces the dead links to `https://www.webbchapel.org/calendar32/` on the Calendar page ("View Full Calendar" and "Calendar Admin Login"). The old PHP calendar can't run on GitHub Pages, so those links are already broken.
+Tracked in issue #4. Before launch:
 - [ ] Review the Spanish translations on the test site (`/es/`).
-- [ ] Replace the remaining placeholder photos and bios (Deacons page).
+- [ ] Get photos and bios for the hidden deacons (Chris Faulkner, Rob Keith, Ryan Nienstadt; `hidden: true` in `src/pages/DeaconsPage.tsx`), or launch without them.
+- [ ] Replace or remove the placeholder Responsibilities list on Crissy Ketchersid's Staff entry.
+- [ ] Read through every English page for typos and outdated info.
+- [ ] Confirm the contact form delivers (Formspree allowed domains include `webbchapel.org`, if restricted) and that Google Analytics (`G-2ET0LS2P8D`) has a data stream for `webbchapel.org`.
+- [ ] Test the live build on a phone and on desktop.
 - [ ] Choose a quiet time to switch (not Sunday morning).
 
 Launch:
@@ -36,7 +39,7 @@ Launch:
    gh api -X PUT repos/wccconline/website/pages -f "source[branch]=live" -f "source[path]=/"
    ```
    GitHub rebuilds in a minute or two. Hard-refresh, then check `/`, `/es/`, `/contact/`, `/elders.html` (redirect), and a PDF.
-5. **After it is live:** work through issue #3 (Google Search Console, sitemap, Analytics). Check that the contact form still sends (the `VITE_FORMSPREE_ID` secret is used by both workflows).
+5. **After it is live:** work through issue #3 (Google Search Console, sitemap, Analytics). Check that the contact form still sends (the `VITE_FORMSPREE_ID` secret is used by both workflows), and update links to the old site (Google Business Profile, social profiles, Realm, printed materials).
 
 Rollback (any time): switch the Pages source back to the old site:
 ```bash
