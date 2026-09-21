@@ -92,8 +92,8 @@ const DeaconsPage: React.FC = () => {
       name: "Marty Reach",
       image: getImagePath('leadership/deacons/deaconReachMarty.jpg'),
       bio: {
-        en: "Marty and his wife Rebecca were married in 2001 and came to Webb Chapel in 2009. He is responsible for the website and administration of Realm. Additionally he volunteers in the audio/video booth with streaming and song projection. They have 2 children, Elizabeth and Nathan.",
-        es: "Marty y su esposa Rebecca se casaron en 2001 y llegaron a Webb Chapel en 2009. Él es responsable del sitio web y de la administración de Realm. Además, es voluntario en la cabina de audio y video con la transmisión en vivo y la proyección de canciones. Tienen 2 hijos, Elizabeth y Nathan.",
+        en: "Marty and his wife Rebecca were married in 2001 and came to Webb Chapel in 2009. He became a deacon in 2025. He is responsible for the website and administration of Realm. Additionally he volunteers in the audio/video booth. They have 2 children, Elizabeth and Nathan.",
+        es: "Marty y su esposa Rebecca se casaron en 2001 y llegaron a Webb Chapel en 2009. Él fue nombrado diácono en 2025. Es responsable del sitio web y de la administración de Realm. Además, es voluntario en la cabina de audio y video. Tienen 2 hijos, Elizabeth y Nathan.",
       }
     },
     {
