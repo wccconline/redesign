@@ -47,6 +47,7 @@ const DeaconsPage: React.FC = () => {
     },
     {
       name: "Chris Faulkner",
+      hidden: true, // no photo/bio yet; remove this line to show
       image: getImagePath('leadership/placeholder.svg'),
       bio: {
         en: "Bio coming soon.",
@@ -63,6 +64,7 @@ const DeaconsPage: React.FC = () => {
     },
     {
       name: "Rob Keith",
+      hidden: true, // no photo/bio yet; remove this line to show
       image: getImagePath('leadership/placeholder.svg'),
       bio: {
         en: "Bio coming soon.",
@@ -79,6 +81,7 @@ const DeaconsPage: React.FC = () => {
     },
     {
       name: "Ryan Nienstadt",
+      hidden: true, // no photo/bio yet; remove this line to show
       image: getImagePath('leadership/placeholder.svg'),
       bio: {
         en: "Bio coming soon.",
@@ -87,10 +90,10 @@ const DeaconsPage: React.FC = () => {
     },
     {
       name: "Marty Reach",
-      image: getImagePath('leadership/placeholder.svg'),
+      image: getImagePath('leadership/deacons/deaconReachMarty.jpg'),
       bio: {
-        en: "Bio coming soon.",
-        es: "Biografía próximamente.",
+        en: "Marty and his wife Rebecca were married in 2001 and came to Webb Chapel in 2009. He is responsible for the website and administration of Realm and volunteers in the video booth. They have 2 children, Elizabeth and Nathan.",
+        es: "Marty y su esposa Rebecca se casaron en 2001 y llegaron a Webb Chapel en 2009. Él es responsable del sitio web y de la administración de Realm, y es voluntario en la cabina de video. Tienen 2 hijos, Elizabeth y Nathan.",
       }
     },
     {
@@ -120,7 +123,7 @@ const DeaconsPage: React.FC = () => {
 
         {/* Deacons Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {deacons.map((deacon, index) => (
+          {deacons.filter((deacon) => !deacon.hidden).map((deacon, index) => (
             <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
               <div className="p-6">
                 <div className="text-center mb-6">
