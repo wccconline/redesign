@@ -48,6 +48,19 @@ gh api -X PUT repos/wccconline/website/pages -f "source[branch]=development" -f 
 
 Updating the live site later: merge to `master` (the test site updates automatically), check it, then run the live workflow again with **publish** on. The `live` branch is force-pushed each time, so it always holds just the latest build.
 
+## Taking the test site down (optional, after launch)
+
+The test site can be switched off and back on without losing anything, since it is rebuilt from the code. This does not affect webbchapel.org.
+
+```bash
+# Unpublish: wccconline.github.io/redesign/ returns 404
+gh api -X DELETE repos/wccconline/redesign/pages
+
+# Bring it back
+gh api -X POST repos/wccconline/redesign/pages -f build_type=workflow
+gh workflow run deploy.yml
+```
+
 ## Things to know
 
 - GitHub Pages allows one custom domain per Pages site. That is why the domain stays on the `website` repo: attaching it to this repo would make the test address redirect to the live site.
