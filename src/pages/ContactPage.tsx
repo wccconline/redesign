@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { MapPin, Phone, Clock } from 'lucide-react';
 import ContactForm from '../components/ContactForm';
 import { useT } from '../utils/i18n';
 import { usePageMeta } from '../utils/usePageMeta';
@@ -61,14 +61,6 @@ const ContactPage: React.FC = () => {
                     <div>
                       <h3 className="font-semibold text-gray-800">{t('Phone', 'Teléfono')}</h3>
                       <p className="text-gray-600">(972) 241-3293</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center">
-                    <Mail className="h-6 w-6 text-church-blue mr-3 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold text-gray-800">{t('Email', 'Correo electrónico')}</h3>
-                      <p className="text-gray-600">info@webbchapel.org</p>
                     </div>
                   </div>
                 </div>

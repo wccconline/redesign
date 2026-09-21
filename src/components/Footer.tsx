@@ -84,7 +84,7 @@ function Footer() {
                     to="/contact" 
                     className="underline hover:text-gray-300 transition-colors"
                   >
-                    {t('Email Us', 'Envíenos un correo')}
+                    {t('Contact Us', 'Contáctenos')}
                   </Link>
                 </div>
               </div>
