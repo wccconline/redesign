@@ -72,7 +72,6 @@ function SmallGroupsPage() {
               <ul className="space-y-2 text-gray-700">
                 <li>{t("• Church facility", "• Instalaciones de la iglesia")}</li>
                 <li>{t("• Member homes", "• Hogares de miembros")}</li>
-                <li>{t("• Community centers", "• Centros comunitarios")}</li>
                 <li>{t("• Online options available", "• Opciones en línea disponibles")}</li>
               </ul>
             </div>
@@ -101,9 +100,14 @@ function SmallGroupsPage() {
                 </p>
               </div>
               <div className="text-center">
-                <div className="bg-church-blue text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <a
+                  href="tel:+19722413293"
+                  aria-label={t("Call the church office at (972) 241-3293", "Llame a la oficina de la iglesia al (972) 241-3293")}
+                  title="(972) 241-3293"
+                  className="bg-church-blue text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 hover:opacity-80 transition-opacity"
+                >
                   <Phone className="h-8 w-8" />
-                </div>
+                </a>
                 <h3 className="text-lg font-semibold text-gray-800 mb-2">{t("Support", "Apoyo")}</h3>
                 <p className="text-gray-700">
                   {t("Receive prayer, encouragement, and practical support from your group members.", "Reciba oración, aliento y apoyo práctico de los miembros de su grupo.")}

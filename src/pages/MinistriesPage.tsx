@@ -46,24 +46,24 @@ const MinistriesPage: React.FC = () => {
     {
       title: { en: "ENGLISH AS A SECOND LANGUAGE MINISTRY", es: "MINISTERIO DE INGLÉS COMO SEGUNDO IDIOMA" },
       content: {
-        en: "ENGLISH AS A SECOND LANGUAGE shares Jesus in the community by teaching English and U.S. Citizenship to speakers of other languages who desire to improve their English skills. The class meets on Wednesday evenings at 7:00 PM.",
-        es: "INGLÉS COMO SEGUNDO IDIOMA (ESL) comparte a Jesús en la comunidad enseñando inglés y ciudadanía de los EE. UU. a personas de otros idiomas que desean mejorar su inglés. La clase se reúne los miércoles por la noche a las 7:00 p.m.",
+        en: "ENGLISH AS A SECOND LANGUAGE shares Jesus in the community by teaching English and U.S. Citizenship to speakers of other languages who desire to improve their English skills. The class meets on Wednesday evenings at 6:30 PM.",
+        es: "INGLÉS COMO SEGUNDO IDIOMA (ESL) comparte a Jesús en la comunidad enseñando inglés y ciudadanía de los EE. UU. a personas de otros idiomas que desean mejorar su inglés. La clase se reúne los miércoles por la noche a las 6:30 p.m.",
       },
       image: getImagePath('esl-logo.png')
     },
     {
       title: { en: "LADIES MINISTRY", es: "MINISTERIO DE DAMAS" },
       content: {
-        en: "Our LADIES MINISTRY is a very active group at Webb Chapel. Ladies Bible Study meets each Tuesday from 10 AM to 11:30 AM. The lessons will be taught by several different ladies. Our biggest event of the year is a Ladies Day in the Spring, followed by several other gatherings throughout the year. All ladies are encouraged and welcomed to participate.",
-        es: "Nuestro MINISTERIO DE DAMAS es un grupo muy activo en Webb Chapel. El Estudio Bíblico de Damas se reúne todos los martes de 10:00 a.m. a 11:30 a.m. Las lecciones son impartidas por diferentes hermanas. Nuestro evento más grande del año es el Día de las Damas en la primavera, seguido de varias otras reuniones durante el año. Se anima y se da la bienvenida a todas las damas a participar.",
+        en: "Our LADIES MINISTRY is a very active group at Webb Chapel. Ladies Bible Study meets each Tuesday from 10 AM to 11:30 AM during the school year. The lessons will be taught by several different ladies. The ministry also holds several gatherings throughout the year. All ladies are encouraged and welcomed to participate.",
+        es: "Nuestro MINISTERIO DE DAMAS es un grupo muy activo en Webb Chapel. El Estudio Bíblico de Damas se reúne todos los martes de 10:00 a.m. a 11:30 a.m. durante el año escolar. Las lecciones son impartidas por diferentes hermanas. El ministerio también realiza varias reuniones durante el año. Se anima y se da la bienvenida a todas las damas a participar.",
       },
       image: getImagePath('ladiesministry-logo.jpg')
     },
     {
       title: { en: "BROTHERS KEEPERS", es: "GUARDIANES DE NUESTROS HERMANOS (BROTHERS KEEPERS)" },
       content: {
-        en: "THE BROTHERS KEEPERS ministry at Webb Chapel is dedicated to meeting the needs of the Webb Chapel members through the strengthening of our relationships with one another and by providing help in times of need. Everyone at Webb Chapel is part of one of the 9 Care Groups.",
-        es: "El ministerio GUARDIANES DE NUESTROS HERMANOS (Brothers Keepers) de Webb Chapel se dedica a atender las necesidades de los miembros de Webb Chapel mediante el fortalecimiento de nuestras relaciones unos con otros y brindando ayuda en tiempos de necesidad. Cada miembro de Webb Chapel forma parte de uno de los 9 Grupos de Cuidado.",
+        en: "THE BROTHERS KEEPERS ministry at Webb Chapel is dedicated to meeting the needs of the Webb Chapel members through the strengthening of our relationships with one another and by providing help in times of need. Everyone at Webb Chapel is part of a Care Group.",
+        es: "El ministerio GUARDIANES DE NUESTROS HERMANOS (Brothers Keepers) de Webb Chapel se dedica a atender las necesidades de los miembros de Webb Chapel mediante el fortalecimiento de nuestras relaciones unos con otros y brindando ayuda en tiempos de necesidad. Cada miembro de Webb Chapel forma parte de un Grupo de Cuidado.",
       }
     },
     {
