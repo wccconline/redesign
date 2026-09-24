@@ -67,6 +67,13 @@ const MinistriesPage: React.FC = () => {
       }
     },
     {
+      title: { en: "FOOD ASSISTANCE", es: "AYUDA ALIMENTARIA" },
+      content: {
+        en: "The FOOD ASSISTANCE program provides support for those in need, in the form of basic groceries and minor household items. We serve both those in the church and the community. If you or someone you know needs assistance, please let us know by calling the church office at (972) 241-3293 during business hours.",
+        es: "El programa de AYUDA ALIMENTARIA brinda apoyo a quienes lo necesitan, en forma de alimentos básicos y artículos menores para el hogar. Servimos tanto a los miembros de la iglesia como a la comunidad. Si usted o alguien que conoce necesita ayuda, por favor avísenos llamando a la oficina de la iglesia al (972) 241-3293 en horario de oficina.",
+      }
+    },
+    {
       title: { en: "THE MISSIONS COMMITTEE MINISTRY", es: "MINISTERIO DEL COMITÉ DE MISIONES" },
       content: {
         en: "THE MISSIONS COMMITTEE consists of members of the Webb Chapel congregation. Its purpose is to ensure that the funding provided by the church for local and international evangelism is allocated in a manner which best spreads the gospel throughout the world. We currently provide monetary support to missionaries in the Ukraine, Mexico, Guyana, Bermuda, Cambodia, and the French speaking countries of Africa and the South Pacific. In addition to missionaries, we also provide funds to organizations such as Nations University, Eastern European Missions and Main Street church of Christ in Dallas, Texas, each dedicated to spreading the gospel.",
