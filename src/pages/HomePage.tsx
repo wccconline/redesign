@@ -49,7 +49,7 @@ const HomePage: React.FC = () => {
             Farmers Branch, Texas
           </p>
           <h1 className="font-questrial text-3xl md:text-4xl text-church-blue mt-2 mb-4">
-            {t("You're invited", "Le invitamos")}
+            {t("You're invited", "Los invitamos")}
           </h1>
           <p className="max-w-xl mx-auto text-lg text-gray-600 leading-relaxed">
             {t(
