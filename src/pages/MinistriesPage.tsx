@@ -46,8 +46,8 @@ const MinistriesPage: React.FC = () => {
     {
       title: { en: "ENGLISH AS A SECOND LANGUAGE MINISTRY", es: "MINISTERIO DE INGLÉS COMO SEGUNDO IDIOMA" },
       content: {
-        en: "ENGLISH AS A SECOND LANGUAGE shares Jesus in the community by teaching English and U.S. Citizenship to speakers of other languages who desire to improve their English skills. The class meets on Wednesday evenings at 6:30 PM.",
-        es: "INGLÉS COMO SEGUNDO IDIOMA (ESL) comparte a Jesús en la comunidad enseñando inglés y ciudadanía de los EE. UU. a personas de otros idiomas que desean mejorar su inglés. La clase se reúne los miércoles por la noche a las 6:30 p.m.",
+        en: "ENGLISH AS A SECOND LANGUAGE shares Jesus in the community by teaching English and U.S. Citizenship to speakers of other languages who desire to improve their English skills. The class meets Sundays at 1:00 PM in the Young Adults classroom in the main building.",
+        es: "INGLÉS COMO SEGUNDO IDIOMA (ESL) comparte a Jesús en la comunidad enseñando inglés y ciudadanía de los EE. UU. a personas de otros idiomas que desean mejorar su inglés. La clase se reúne los domingos a la 1:00 p.m. en el salón de Jóvenes Adultos, en el edificio principal.",
       },
       image: getImagePath('esl-logo.png')
     },
